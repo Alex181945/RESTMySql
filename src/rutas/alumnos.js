@@ -10,6 +10,12 @@
  * 
  */
 
+ 'use strict'
+
+ var AlumnoControlador = require('../controladores/alumnos'),
+    express = require('express'),
+    router  = express.Router();
+
  module.exports = function (app){
      app.get('/', (req, res) => {
          res.json([]);
