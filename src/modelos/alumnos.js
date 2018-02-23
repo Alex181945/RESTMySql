@@ -13,7 +13,7 @@
 
  'use strict'
 
- var conexion = require('../db/conexion'),
+ var conexion = require('/db/conexion'),
  Alumno   = () => {};     
 
  Alumno.todos = () => {};
