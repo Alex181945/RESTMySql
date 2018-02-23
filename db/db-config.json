@@ -1,3 +1,4 @@
+/*Archivo de configuracion de la base de datos*/
 {
 	"mysql" : {
 		"host" : "localhost",
