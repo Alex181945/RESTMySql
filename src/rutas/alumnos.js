@@ -12,7 +12,7 @@
 
  'use strict'
 
- var AlumnoControlador = require('../controladores/alumnos'),
+ var /*AlumnoControlador = require('../controladores/alumnos'),*/
     express = require('express'),
     router  = express.Router();
 
