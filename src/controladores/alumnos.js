@@ -13,7 +13,7 @@
 
 'use strict'
 
- var alumnoModelo = require(/modelos/alumnos),
+ var alumnoModelo = require('../modelos/alumnos'),
  AlumnoControlador   = () => {};     
 
  Alumno.todos = (req, res, next) => {};
