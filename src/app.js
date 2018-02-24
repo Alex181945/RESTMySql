@@ -11,6 +11,9 @@
  * 
  */
 
+ /*Directorio Base*/
+ global.__basedir = 'C:/Proyectos/Node/RESTMySql/';
+
  /*Dependencias requeridas*/
  const bodyParser = require('body-parser');
  const express    = require('express');
@@ -19,15 +22,16 @@
  const app        = express();
 
  /*Configuraciones*/
- app.set('port', process.env.PORT || 3000);
-
- /*Middlewares*/
- app.use(morgan('dev'));
- app.use(bodyParser.json());
+ const port = (process.env.PORT || 3000);
 
  /*Rutas*/
- require('./rutas/alumnos')(app);
+ const usuario = require('./rutas/ct/usuario/usuarioR');
 
- app.listen(app.get('port'), () => {
-     console.log('servidor en el puerto 3000');
- });
+ app
+    .set('port', port)
+    /*Middlewares*/
+    .use(morgan('dev'))
+    .use(bodyParser.json())
+    .use(usuario);
+
+module.exports = app;

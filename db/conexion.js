@@ -1,6 +1,7 @@
 'use strict'
 
 var mysql = require('mysql'),
+	/*myConnection = require('express-myconnection'),*/
 	conf  = require('./db-config'),
 	dbOptions = {
 		host : conf.mysql.host,
@@ -9,6 +10,7 @@ var mysql = require('mysql'),
 		password : conf.mysql.pass,
 		database : conf.mysql.db
 	},
+	//myConn = myConnection(mysql,dbOptions,'request');
 	myConn = mysql.createConnection(dbOptions);
 
 myConn.connect((err) => {
