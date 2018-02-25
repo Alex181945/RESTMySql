@@ -17,6 +17,7 @@
  const restFul    = require('express-method-override')('_method');
  const morgan     = require('morgan');
  const app        = express();
+ const app2       = express();
 
  /*Configuraciones*/
  app.set('port', process.env.PORT || 3000);
