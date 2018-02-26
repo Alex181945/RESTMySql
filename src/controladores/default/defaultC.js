@@ -18,6 +18,9 @@
         title : 'Respuesta',
         data : '[Vacio]'
     }
+
+    res.json(respuesta);
+
  };
 
  module.exports = DefectoControlador;

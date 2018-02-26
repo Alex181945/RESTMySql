@@ -17,6 +17,8 @@ var DefaultControlador = require(__basedir + 'src/controladores/default/defaultC
     router  = express.Router();
 
     router
-       .get('/', DefaultControlador.respuesta())
+       .get('/', (req, res) => {
+           res.json([]);
+       })
 
 module.exports = router;
