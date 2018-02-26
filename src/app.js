@@ -11,9 +11,6 @@
  * 
  */
 
- /*Directorio Base*/
- global.__basedir = 'C:/Proyectos/Node/RESTMySql/';
-
  /*Dependencias requeridas*/
  const bodyParser = require('body-parser');
  const express    = require('express');
