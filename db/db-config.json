@@ -1,9 +1,9 @@
 {
 	"mysql" : {
-		"host" : "localhost",
+		"host" : "us-cdbr-iron-east-05.cleardb.net",
 		"port" : "3306",
-		"user" : "root",
-		"pass" : "",
-		"db"   : "escuela"
+		"user" : "b53e8f9bf69385",
+		"pass" : "8342b12e",
+		"db"   : "heroku_4db762767b31ffb"
 	}
 }
