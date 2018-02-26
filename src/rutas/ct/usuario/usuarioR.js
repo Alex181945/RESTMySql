@@ -17,6 +17,6 @@
      router  = express.Router();
 
      router
-        .get('/', UsuarioControlador.valida)
+        .get('/usuariovalida', UsuarioControlador.valida)
 
  module.exports = router;

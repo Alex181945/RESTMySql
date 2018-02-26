@@ -23,12 +23,14 @@
 
  /*Rutas*/
  const usuario = require('./rutas/ct/usuario/usuarioR');
+ const defecto = require('./rutas/default/defaultR');
 
  app
     .set('port', port)
     /*Middlewares*/
     .use(morgan('dev'))
     .use(bodyParser.json())
-    .use(usuario);
+    .use(usuario)
+    .use(defecto);
 
 module.exports = app;

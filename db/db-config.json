@@ -1,9 +1,14 @@
 {
 	"mysql" : {
-		"host" : "us-cdbr-iron-east-05.cleardb.net",
+		"host" : "localhost",
 		"port" : "3306",
-		"user" : "b53e8f9bf69385",
-		"pass" : "8342b12e",
-		"db"   : "heroku_4db762767b31ffb"
+		"user" : "root",
+		"pass" : "",
+		"db"   : "senado",
+		"_comment" : "us-cdbr-iron-east-05.cleardb.net",
+		"_comment" : "3306",
+		"_comment" : "b53e8f9bf69385",
+		"_comment" : "8342b12e",
+		"_comment"   : "heroku_4db762767b31ffb"
 	}
 }
