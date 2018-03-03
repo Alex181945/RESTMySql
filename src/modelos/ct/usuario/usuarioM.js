@@ -27,7 +27,10 @@
  UsuarioModelo.borra = () => {};
 
  UsuarioModelo.valida = (cb) => {
-     conexion.query('CALL consultaUsuario()', cb);
+     let conn = new conexion();
+     console.log(conn.conectar());
+     console.log(conn.desconectar());
+     cb = "Fin"
  };
 
  module.exports = UsuarioModelo;
