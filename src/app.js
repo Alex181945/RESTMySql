@@ -28,7 +28,6 @@
  console.log(port);
 
  app
-    //.set('port', port)
     /*Middlewares*/
     .use(morgan('dev'))
     .use(bodyParser.json())
