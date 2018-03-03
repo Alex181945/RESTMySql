@@ -19,8 +19,5 @@ global.__basedir = __dirname + "/";
 /*Archivo de inicio*/
 var server = require('./src/app');
 
-/*Puerto por defecto*/
-server.listen(3000);
-
 /*Mensaje para indicar servicio activo*/
 console.log("Servicio Iniciado");

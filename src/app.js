@@ -28,11 +28,12 @@
  console.log(port);
 
  app
-    .set('port', port)
+    //.set('port', port)
     /*Middlewares*/
     .use(morgan('dev'))
     .use(bodyParser.json())
     .use(usuario)
-    .use(defecto);
+    .use(defecto)
+    .listen(port);
 
 module.exports = app;
