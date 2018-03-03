@@ -25,6 +25,8 @@
  const usuario = require('./rutas/ct/usuario/usuarioR');
  const defecto = require('./rutas/default/defaultR');
 
+ console.log(port);
+
  app
     .set('port', port)
     /*Middlewares*/
