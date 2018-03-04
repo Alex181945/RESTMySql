@@ -13,24 +13,31 @@
 
  'use strict'
 
- var conexion = require(__basedir + 'db/conexion'),
+ var claseConexion = require(__basedir + 'db/conexion'),
  	 UsuarioModelo  = () => {};     
 
  UsuarioModelo.todos = () => {};
 
  UsuarioModelo.uno = () => {};
 
- UsuarioModelo.inserta = () => {};
+ UsuarioModelo.inserta = (data, callback) => {};
 
  UsuarioModelo.actualiza = () => {};
 
  UsuarioModelo.borra = () => {};
 
- UsuarioModelo.valida = (cb) => {
-     let conn = new conexion();
-     console.log(conn.conectar());
-     console.log(conn.desconectar());
-     cb = "Fin"
+ UsuarioModelo.valida = (data, callback) => {
+     /*Instancia de clase conexion*/
+     let conexion = new claseConexion();
+
+     /*Ejecucion de metodo conectar*/
+     let consulta = conexion.conectar();
+
+     /*Procedimiento MySql*/
+     consulta.query(`CALL consultaUsuario(${data.cUsuario}, ${data.cContrasena}, ${data.lError}, ${data.cSqlState}, ${data.cError})`, callback);
+
+     /*Ejecucion de metodo desconectar*/
+     conexion.desconectar();
  };
 
  module.exports = UsuarioModelo;

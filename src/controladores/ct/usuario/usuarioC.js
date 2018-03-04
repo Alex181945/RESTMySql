@@ -27,17 +27,32 @@
  UsuarioControlador.borra = (req, res, next) => {};
 
  UsuarioControlador.valida = (req, res, next) => {
-     UsuarioModelo.valida((error, resp) => {
+
+    let credenciales = {
+        cUsuario  : req.query.cUsuario,
+        cContrasena : req.query.cContrasena,
+        lError : 0,
+        cSqlState : '',
+        cError : ''
+    }
+
+     UsuarioModelo.valida(credenciales, (error) => {
          if(error){
+
              let respuesta = {
-                 title : 'Respuesta',
-                 data : error
-            }
-         } else{
-             let respuesta = {
-                 title : 'Respuesta',
-                 data : res
+                 title : 'Error',
+                 descripcion: error
              }
+
+             res.send(respuesta);
+
+         } else {
+             let respuesta = {
+                 title : 'Exito',
+                 descripcion : error
+             }
+
+             res.send(respuesta);
          }
      });
  };

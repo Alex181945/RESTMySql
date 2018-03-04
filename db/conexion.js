@@ -19,6 +19,7 @@ class Conexion{
 		this.myConn.connect((err) => {
 			return (err) ? console.log(`Error al conectarse a MySQL: ${err.stack}`) : console.log(`Conexion exitosa con id: ${this.myConn.threadId}`);
 		});
+		return this.myConn;
 	}
 
 	desconectar(){
