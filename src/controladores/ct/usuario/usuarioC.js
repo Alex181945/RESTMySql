@@ -36,7 +36,7 @@
         cError : ''
     }
 
-     UsuarioModelo.valida(credenciales, (error) => {
+     UsuarioModelo.valida(credenciales, (error, filas) => {
          if(error){
 
              let respuesta = {
@@ -49,7 +49,7 @@
          } else {
              let respuesta = {
                  title : 'Exito',
-                 descripcion : error
+                 descripcion : filas
              }
 
              res.send(respuesta);

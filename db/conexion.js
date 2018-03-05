@@ -10,7 +10,8 @@ class Conexion{
 			port : this.conf.mysql.port,
 			user : this.conf.mysql.user,
 			password : this.conf.mysql.pass,
-			database : this.conf.mysql.db
+			database : this.conf.mysql.db,
+			multipleStatements: true
 		};
 		this.myConn = this.mysql.createConnection(this.dbOptions);
 	}
