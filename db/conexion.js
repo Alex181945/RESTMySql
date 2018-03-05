@@ -10,7 +10,8 @@ class Conexion{
 			port : this.conf.mysql.port,
 			user : this.conf.mysql.user,
 			password : this.conf.mysql.pass,
-			database : this.conf.mysql.db
+			database : this.conf.mysql.db,
+			multipleStatements: true
 		};
 		this.myConn = this.mysql.createConnection(this.dbOptions);
 	}
@@ -19,6 +20,7 @@ class Conexion{
 		this.myConn.connect((err) => {
 			return (err) ? console.log(`Error al conectarse a MySQL: ${err.stack}`) : console.log(`Conexion exitosa con id: ${this.myConn.threadId}`);
 		});
+		return this.myConn;
 	}
 
 	desconectar(){

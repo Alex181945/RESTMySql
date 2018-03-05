@@ -17,6 +17,6 @@
      router  = express.Router();
 
      router
-        .get('/usuariovalida', UsuarioControlador.valida)
+        .post('/usuariovalida', UsuarioControlador.valida)
 
  module.exports = router;
