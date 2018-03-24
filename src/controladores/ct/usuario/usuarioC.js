@@ -16,7 +16,9 @@
  var UsuarioModelo      = require(__basedir + 'src/modelos/ct/usuario/usuarioM'),
  	 UsuarioControlador = () => {};     
 
- UsuarioControlador.todos = (req, res, next) => {};
+ UsuarioControlador.todos = (req, res, next) => {
+    res.send('Accedi');
+ };
 
  UsuarioControlador.uno = (req, res, next) => {};
 
@@ -25,36 +27,5 @@
  UsuarioControlador.actualiza = (req, res, next) => {};
 
  UsuarioControlador.borra = (req, res, next) => {};
-
- UsuarioControlador.valida = (req, res, next) => {
-
-    let credenciales = {
-        cUsuario  : req.query.cUsuario,
-        cContrasena : req.query.cContrasena,
-        lError : 0,
-        cSqlState : '',
-        cError : ''
-    }
-
-     UsuarioModelo.valida(credenciales, (error, filas) => {
-         if(error){
-
-             let respuesta = {
-                 title : 'Error',
-                 descripcion: error
-             }
-
-             res.send(respuesta);
-
-         } else {
-             let respuesta = {
-                 title : 'Exito',
-                 descripcion : filas
-             }
-
-             res.send(respuesta);
-         }
-     });
- };
 
  module.exports = UsuarioControlador;

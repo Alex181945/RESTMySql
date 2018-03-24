@@ -18,6 +18,6 @@
      router  = express.Router();
      
      router
-       .post('/consultausuarios', auth.isAuth, UsuarioControlador.valida)
+       .get('/consultausuarios', auth.isAuth, UsuarioControlador.todos)
 
  module.exports = router;
