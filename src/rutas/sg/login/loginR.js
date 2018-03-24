@@ -13,11 +13,11 @@
 
 'use strict'
 
-var UsuarioControlador = require(__basedir + 'src/controladores/ct/usuario/usuarioC'),
+var LoginControlador = require(__basedir + 'src/controladores/sg/login/loginC'),
     express = require('express'),
     router  = express.Router();
 
     router
-       .post('/validausuario', UsuarioControlador.valida)
+       .post('/validausuario', LoginControlador.valida)
 
 module.exports = router;
