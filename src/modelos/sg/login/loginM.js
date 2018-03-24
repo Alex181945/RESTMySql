@@ -14,7 +14,7 @@
 'use strict'
 
 const claseConexion = require(__basedir + 'db/conexion'),
-    servicio = require(__basedir + 'servicio/seg/token'),
+    servicio = require(__basedir + 'src/servicios/seg/token'),
      LoginModelo  = () => {};
 
 
@@ -31,18 +31,10 @@ LoginModelo.valida = (data, callback) => {
     sql += 'CALL validaUsuario(@p0, @p1, @p2, @p3, @p4);';
     sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
 
-    consulta.query(sql, callback);
-        //consulta.query('CALL consultaUsuario2()', callback);
-        //consulta.query('CALL consultaUsuario(`cUsuario`,`cContrasena`,`lError`,`cSqlState`,`cError`)', data, callback);
-        /*consulta.query(sql, function(error, resultado, campos){
-            if(error){
-                callback = error;
-                return;
-            }
-            console.log(resultado);
-            //console.log(campos);
-            callback = resultado;
-        });*/
+    //consulta.query(sql, callback);
+
+    //return res.status(200).send({token: servicio.createToken()});
+
    
     /*Ejecucion de metodo desconectar*/
     conexion.desconectar();
