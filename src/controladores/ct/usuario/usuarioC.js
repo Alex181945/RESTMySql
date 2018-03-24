@@ -13,7 +13,7 @@
 
 'use strict'
 
- var UsuarioModelo      = require(__basedir + 'src/modelos/ct/usuario/usuarioM'),
+ const UsuarioModelo      = require(__basedir + 'src/modelos/ct/usuario/usuarioM'),
  	 UsuarioControlador = () => {};     
 
  UsuarioControlador.todos = (req, res, next) => {

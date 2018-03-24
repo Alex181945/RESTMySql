@@ -13,7 +13,7 @@
 
  'use strict'
 
- var claseConexion = require(__basedir + 'db/conexion'),
+ const claseConexion = require(__basedir + 'db/conexion'),
  	 UsuarioModelo  = () => {};     
 
  UsuarioModelo.todos = () => {};
