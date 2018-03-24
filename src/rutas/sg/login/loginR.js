@@ -13,7 +13,7 @@
 
 'use strict'
 
-var LoginControlador = require(__basedir + 'src/controladores/sg/login/loginC'),
+const LoginControlador = require(__basedir + 'src/controladores/sg/login/loginC'),
     express = require('express'),
     router  = express.Router();
 

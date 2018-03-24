@@ -13,7 +13,7 @@
 
 'use strict'
 
-var LoginModelo      = require(__basedir + 'src/modelos/sg/login/loginM'),
+const LoginModelo      = require(__basedir + 'src/modelos/sg/login/loginM'),
       LoginControlador = () => {};
       
 LoginControlador.valida = (req, res, next) => {

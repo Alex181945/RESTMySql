@@ -13,8 +13,10 @@
 
 'use strict'
 
-var claseConexion = require(__basedir + 'db/conexion'),
+const claseConexion = require(__basedir + 'db/conexion'),
+    servicio = require(__basedir + 'servicio/seg/token'),
      LoginModelo  = () => {};
+
 
 LoginModelo.valida = (data, callback) => {
     
