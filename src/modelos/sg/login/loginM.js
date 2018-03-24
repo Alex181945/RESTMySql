@@ -26,7 +26,7 @@ LoginModelo.valida = (data, callback) => {
    
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data.cUsuario}'; SET @p1 = '${data.cContrasena}'; `
-    sql += 'CALL consultaUsuario(@p0, @p1, @p2, @p3, @p4);';
+    sql += 'CALL validaUsuario(@p0, @p1, @p2, @p3, @p4);';
     sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
 
     consulta.query(sql, callback);

@@ -16,7 +16,6 @@
      express = require('express'),
      router  = express.Router();
 
-     router
-        .post('/validausuario', UsuarioControlador.valida)
+     
 
  module.exports = router;
