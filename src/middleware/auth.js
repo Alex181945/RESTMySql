@@ -13,9 +13,7 @@
 
  'use strict'
 
- const jwt = require('jwt-simple'),
-    moment = require('moment'),
-    config = require(__basedir + 'config/config');
+ const servicio = require('../servicios/seg/token');
 
  function isAuth(req, res, next){
 
@@ -23,15 +21,15 @@
         return res.status(403).send({message: 'No tienes autorizacion'});
     }
 
-    const token = req.headers.authorization.split(' ')[1],
-        payload = jwt.decode(token, config.SECRET_TOKEN);
-    
-    if(payload.exp <= moment().unix()){
-        return res.status(401).send({message: 'El Token ha expirado'});
-    }
+    const token = req.headers.authorization.split(' ')[1];
 
-    req.user = payload.sub;
-    next();
+    servicio.decodeToken(token)
+        .then(response => {
+            next();
+        })
+        .catch(response => {
+            res.status(response.status);
+        });
 
  }
 

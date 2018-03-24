@@ -25,15 +25,20 @@ LoginModelo.valida = (data, callback) => {
    
     /*Ejecucion de metodo conectar*/
     let consulta = conexion.conectar();
+
+    /*Respuesta consulta*/
+    let respuesta;
    
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data.cUsuario}'; SET @p1 = '${data.cContrasena}'; `
     sql += 'CALL validaUsuario(@p0, @p1, @p2, @p3, @p4);';
     sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
 
-    //consulta.query(sql, callback);
+    consulta.query(sql, respuesta);
 
-    //return res.status(200).send({token: servicio.createToken()});
+    console.log(respuesta);
+
+    return res.status(200).send({token: servicio.createToken('prueba')});
 
    
     /*Ejecucion de metodo desconectar*/
