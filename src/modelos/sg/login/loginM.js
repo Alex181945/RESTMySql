@@ -34,12 +34,30 @@ LoginModelo.valida = (data, callback) => {
     sql += 'CALL validaUsuario(@p0, @p1, @p2, @p3, @p4);';
     sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
 
-    consulta.query(sql, respuesta);
+    /*Llamado de un query simple*/
+    //consulta.query(sql, callback);
 
-    console.log(respuesta);
+    /*Llamado de un query haciendo uso de una funcion*/
+    consulta.query(sql, function(error, result, fields){
 
-    return res.status(200).send({token: servicio.createToken('prueba')});
+        /*Variable que guarda el resultado*/
+        let resultado;
 
+        /*Llenado del resultado*/
+        if(error){
+            resultado = {
+                error: error
+            }    
+        } else{
+            resultado = {
+                validacion: result[4],
+                datos: result[2],
+                token: servicio.createToken('prueba')
+            }
+        }
+        /*Solucion a la callback*/
+        callback(resultado);
+    });
    
     /*Ejecucion de metodo desconectar*/
     conexion.desconectar();
