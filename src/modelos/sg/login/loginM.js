@@ -49,10 +49,17 @@ LoginModelo.valida = (data, callback) => {
                 error: error
             }    
         } else{
-            resultado = {
-                validacion: result[4],
-                datos: result[2],
-                token: servicio.createToken('prueba')
+            if(result[4].lError != 0){
+                resultado = {
+                    validacion: result[4],
+                    datos: result[2],
+                    token: servicio.createToken(result[2].cUsuario)
+                }
+            } else{
+                resultado = {
+                    validacion: result[4],
+                    datos: result[2],
+                }
             }
         }
         /*Solucion a la callback*/
