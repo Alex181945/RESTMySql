@@ -43,11 +43,11 @@ function decodeToken(token){
 
             resolve(payload.sub);
 
-        } catch (error) {
+        } catch (err) {
             reject({
                 status: 500,
                 message: 'Token invalido'
-            })
+            });
         }
 
     });

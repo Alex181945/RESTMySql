@@ -49,7 +49,7 @@ LoginModelo.valida = (data, callback) => {
                 error: error
             }    
         } else{
-            if(result[4].lError != 0){
+            if(result.length > 4){
                 resultado = {
                     validacion: result[4],
                     datos: result[2],
@@ -57,8 +57,8 @@ LoginModelo.valida = (data, callback) => {
                 }
             } else{
                 resultado = {
-                    validacion: result[4],
-                    datos: result[2],
+                    validacion: result[3],
+                    datos: '',
                 }
             }
         }
