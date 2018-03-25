@@ -23,6 +23,7 @@
 
  /*Rutas*/
  const usuario = require('./rutas/ct/usuario/usuarioR');
+ const login   = require('./rutas/sg/login/loginR');
  const defecto = require('./rutas/default/defaultR');
 
  console.log(port);
@@ -32,6 +33,7 @@
     .use(morgan('dev'))
     .use(bodyParser.json())
     .use(usuario)
+    .use(login)
     .use(defecto)
     .listen(port);
 

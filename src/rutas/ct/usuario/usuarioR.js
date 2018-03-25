@@ -12,11 +12,12 @@
 
  'use strict'
 
- var UsuarioControlador = require(__basedir + 'src/controladores/ct/usuario/usuarioC'),
+ const UsuarioControlador = require(__basedir + 'src/controladores/ct/usuario/usuarioC'),
      express = require('express'),
+     auth    = require(__basedir + 'src/middleware/auth'),
      router  = express.Router();
-
+     
      router
-        .post('/usuariovalida', UsuarioControlador.valida)
+       .get('/consultausuarios', auth, UsuarioControlador.todos)
 
  module.exports = router;
