@@ -26,10 +26,8 @@ LoginControlador.valida = (req, res, next) => {
     LoginModelo.valida(credenciales, (error, filas) => {
         
         if(error){
-            console.log(error);
             res.send(error);
         } else {
-            console.log(filas);
             res.send(filas);
         }
     });
