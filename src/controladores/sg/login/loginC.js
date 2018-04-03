@@ -20,19 +20,14 @@ LoginControlador.valida = (req, res, next) => {
 
     let credenciales = {
         cUsuario  : req.body.cUsuario,
-        cContrasena : req.body.cContrasena,
-        lError : 0,
-        cSqlState : '',
-        cError : ''
+        cContrasena : req.body.cContrasena
     }
     
     LoginModelo.valida(credenciales, (error, filas) => {
         
         if(error){
-            console.log(error);
             res.send(error);
         } else {
-            console.log(filas);
             res.send(filas);
         }
     });
