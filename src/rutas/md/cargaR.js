@@ -14,6 +14,7 @@
 
 const CargaControlador = require(__basedir + 'src/controladores/md/cargaC'),
     express = require('express'),
+    auth    = require(__basedir + 'src/middleware/auth'),
     router  = express.Router();
 
     router
