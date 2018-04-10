@@ -32,6 +32,7 @@
  app
     /*Middlewares*/
     .use(morgan('dev'))
+    .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
     .use(usuario)
     .use(login)
