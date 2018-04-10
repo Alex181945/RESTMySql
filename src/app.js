@@ -25,6 +25,7 @@
  const usuario = require('./rutas/ct/usuario/usuarioR');
  const login   = require('./rutas/sg/login/loginR');
  const defecto = require('./rutas/default/defaultR');
+ const ticket  = require('./rutas/op/ticket/ticketR');
  const carga   = require('./rutas/md/cargaR');
 
  console.log(port);
@@ -36,6 +37,7 @@
     .use(bodyParser.json())
     .use(usuario)
     .use(login)
+    .use(ticket)
     .use(defecto)
     .use(carga)
     .listen(port);
