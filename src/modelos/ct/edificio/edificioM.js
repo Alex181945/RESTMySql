@@ -51,8 +51,8 @@ EdificioModelo.todos = (data, callback) => {
                 }
             } else if(result.length == 4){
                 resultado = {
-                    validacion: result[1],
-                    datos: result[3]
+                    validacion: result[3],
+                    datos: result[1]
                 }
             } else{
                 resultado = {

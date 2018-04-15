@@ -18,6 +18,6 @@ const EdificioControlador = require(__basedir + 'src/controladores/ct/edificio/e
     router  = express.Router();
     
     router
-      .get('/consultaedificios', EdificioControlador.todos)
+      .get('/edificios/consulta', auth, EdificioControlador.todos)
 
 module.exports = router;
