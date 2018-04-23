@@ -1,14 +1,14 @@
 {
 	"mysql" : {
-		"host" : "127.0.0.1",
+		"host" : "us-cdbr-iron-east-05.cleardb.net",
 		"port" : "3306",
-		"user" : "root",
-		"pass" : "",
-		"db"   : "senado",
-		"_comment" : "us-cdbr-iron-east-05.cleardb.net",
+		"user" : "b9a5dfb045ef64",
+		"pass" : "8acd94b8",
+		"db"   : "heroku_0a8e824845c1341",
+		"_comment" : "127.0.0.1",
 		"_comment" : "3306",
-		"_comment" : "b53e8f9bf69385",
-		"_comment" : "8342b12e",
-		"_comment"   : "heroku_4db762767b31ffb"
+		"_comment" : "root",
+		"_comment" : "",
+		"_comment"   : "senado"		
 	}
 }
