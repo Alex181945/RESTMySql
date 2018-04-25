@@ -27,7 +27,9 @@
  const defecto  = require('./rutas/default/defaultR');
  const ticket   = require('./rutas/op/ticket/ticketR');
  const carga    = require('./rutas/md/cargaR');
- const edificio = require('./rutas/ct/edificio/edificioR'); 
+ const edificio = require('./rutas/ct/edificio/edificioR');
+ const solicitud= require('./rutas/ct/fmsolicitud/fmsolicitudR');
+ const servicio = require('./rutas/ct/tpservicio/tpservicioR');
 
  console.log(port);
 
@@ -42,6 +44,8 @@
     .use(defecto)
     .use(carga)
     .use(edificio)
+    .use(solicitud)
+    .use(servicio)
     .listen(port);
 
 module.exports = app;
