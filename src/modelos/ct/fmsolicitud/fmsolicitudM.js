@@ -4,7 +4,6 @@
  * Fecha: 23/04/2018
  * Descripcion: Modelo Tipo de Solicitud
  * REST
- * 
  * Modificaciones:
  * <Quien modifico:> <Cuando modifico:> <Donde modifico:>
  * 

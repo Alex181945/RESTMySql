@@ -6,7 +6,6 @@
  * REST
  * 
  * Modificaciones:
- * 
  */
 
 'use strict'

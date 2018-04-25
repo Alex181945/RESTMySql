@@ -30,6 +30,7 @@
  const edificio = require('./rutas/ct/edificio/edificioR');
  const solicitud= require('./rutas/ct/fmsolicitud/fmsolicitudR');
  const servicio = require('./rutas/ct/tpservicio/tpservicioR');
+ 
 
  console.log(port);
 
