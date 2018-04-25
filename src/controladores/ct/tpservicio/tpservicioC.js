@@ -4,7 +4,6 @@
  * Fecha: 19/04/2018
  * Descripcion: Controlador Edificios
  * REST
- * 
  * Modificaciones:
  * 
  */

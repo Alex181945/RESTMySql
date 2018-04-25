@@ -4,7 +4,6 @@
  * Fecha: 19/04/2018
  * Descripcion: Modelo Tipo de Servicio
  * REST
- * 
  * Modificaciones:
  * <Quien modifico:> <Cuando modifico:> <Donde modifico:>
  * 
