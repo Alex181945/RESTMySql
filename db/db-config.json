@@ -4,7 +4,7 @@
 		"port" : "3306",
 		"user" : "root",
 		"pass" : "",
-		"db"   : "senado",
+		"db"   : "escuelast",
 		"_comment" : "us-cdbr-iron-east-05.cleardb.net",
 		"_comment" : "3306",
 		"_comment" : "b9a5dfb045ef64",
