@@ -30,6 +30,7 @@
  const edificio = require('./rutas/ct/edificio/edificioR');
  const solicitud= require('./rutas/ct/fmsolicitud/fmsolicitudR');
  const servicio = require('./rutas/ct/tpservicio/tpservicioR');
+ const srvsolic = require('./rutas/ct/srvsolicitado/srvsolicitadoR');
  
 
  console.log(port);
@@ -47,6 +48,7 @@
     .use(edificio)
     .use(solicitud)
     .use(servicio)
+    .use(srvsolic)
     .listen(port);
 
 module.exports = app;
