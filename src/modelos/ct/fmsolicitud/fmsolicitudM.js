@@ -12,7 +12,8 @@
 'use strict'
 
 const claseConexion = require(__basedir + 'db/conexion'),
-     SolicitudModelo  = () => {};     
+     SolicitudModelo  = () => {};
+const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');     
 
      SolicitudModelo.todos = (data, callback) => {
     
@@ -42,25 +43,7 @@ const claseConexion = require(__basedir + 'db/conexion'),
                 error: error
             }    
         } else{
-
-            let validacion = null;
-            let datos = null;
-
-            result.forEach(element => {
-                if(Array.isArray(element)){
-
-                    if(element.length != 1){
-                        datos = element;
-                    } else{
-                        validacion = element;
-                    }
-                }
-            });
-
-            resultado = {
-                validacion: validacion,
-                    datos: datos
-            }
+            resultado = traeResultado.leeResultadoProcedimiento(result);
         }
         /*Solucion a la callback*/
         callback(resultado);

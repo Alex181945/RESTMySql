@@ -14,7 +14,8 @@
  'use strict'
 
  const claseConexion = require(__basedir + 'db/conexion'),
- 	 UsuarioModelo  = () => {};     
+	  UsuarioModelo  = () => {};
+ const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');	       
 
  UsuarioModelo.todos = () => {};
 
