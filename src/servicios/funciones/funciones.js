@@ -21,11 +21,10 @@ function leeResultadoProcedimiento(result){
 
     result.forEach(element => {
         if(Array.isArray(element)){
-
-            if(element.length != 1){
-                datos = element;
-            } else{
+            if(result[result.length -1] == element){
                 validacion = element;
+            } else{
+                datos = element;
             }
         }
     });
