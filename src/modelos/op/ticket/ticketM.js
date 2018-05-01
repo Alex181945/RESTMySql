@@ -48,17 +48,7 @@ TicketModelo.todos = (data, callback) => {
                 error: error
             }    
         } else{
-            if(result.length > 4){
-                resultado = {
-                    validacion: result[4],
-                    datos: result[2],
-                }
-            } else{
-                resultado = {
-                    validacion: result[3],
-                    datos: '',
-                }
-            }
+            resultado = traeResultado.leeResultadoProcedimiento(result);
         }
         /*Solucion a la callback*/
         callback(resultado);
@@ -104,18 +94,24 @@ TicketModelo.inserta = (data, callback) =>{
                 error: error
             }    
         } else{
-            /*if(result.length > 4){
-                resultado = {
-                    validacion: result[4],
-                    datos: result[2],
+            let validacion = null;
+            let datos = null;
+
+            result.forEach(element => {
+                if(Array.isArray(element)){
+
+                    if(element.length != 1){
+                        datos = element;
+                    } else{
+                        validacion = element;
+                    }
                 }
-            } else{
-                resultado = {
-                    validacion: result[3],
-                    datos: '',
-                }
-            }*/
-            console.log(result)
+            });
+
+            resultado = {
+                validacion: validacion,
+                    datos: datos
+            }
         }
         /*Solucion a la callback*/
         callback(resultado);

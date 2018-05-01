@@ -15,7 +15,7 @@
 
 const claseConexion = require(__basedir + 'db/conexion'),
      CargaModelo  = () => {};
-
+const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');     
 
 CargaModelo.todos = (data, callback) => {
     
@@ -48,17 +48,7 @@ CargaModelo.todos = (data, callback) => {
                 error: error
             }    
         } else{
-            if(result.length > 4){
-                resultado = {
-                    validacion: result[4],
-                    datos: result[2],
-                }
-            } else{
-                resultado = {
-                    validacion: result[3],
-                    datos: '',
-                }
-            }
+            resultado = traeResultado.leeResultadoProcedimiento(result);
         }
         /*Solucion a la callback*/
         callback(resultado);

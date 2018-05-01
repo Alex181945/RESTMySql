@@ -12,7 +12,8 @@
 'use strict'
 
 const claseConexion = require(__basedir + 'db/conexion'),
-     ServicioModelo  = () => {};     
+     ServicioModelo  = () => {};
+const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');     
 
 ServicioModelo.todos = (data, callback) => {
     
@@ -42,22 +43,7 @@ ServicioModelo.todos = (data, callback) => {
                 error: error
             }    
         } else{
-            if(result.length > 4){
-                resultado = {
-                    validacion: result[4],
-                    datos: result[2]
-                }
-            } else if(result.length == 4){
-                resultado = {
-                    validacion: result[3],
-                    datos: result[1]
-                }
-            } else{
-                resultado = {
-                    validacion: result[3],
-                    datos: '',
-                }
-            }
+            resultado = traeResultado.leeResultadoProcedimiento(result);
         }
         /*Solucion a la callback*/
         callback(resultado);
