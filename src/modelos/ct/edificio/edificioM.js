@@ -58,7 +58,49 @@ EdificioModelo.todos = (data, callback) => {
 
 EdificioModelo.uno = () => {};
 
-EdificioModelo.inserta = (data, callback) => {};
+EdificioModelo.inserta = (data, callback) => {
+
+    /*Instancia de clase conexion*/
+    let conexion = new claseConexion();
+   
+    /*Ejecucion de metodo conectar*/
+    let consulta = conexion.conectar();
+
+    /*Conversion de string a json*/
+    let obj = JSON.parse(data);
+
+    /*Procedimiento MySql*/
+    let sql = `SET @p0 = '${obj.cEdificio}'; SET @p1 = '${obj.cAbreviatura}'; `;
+    sql += `SET @p2 = '${obj.iPisos}'; SET @p3 = '${obj.cPisoEsp}'; `;
+    sql += `SET @p4 = '${obj.cCalle}'; SET @p5 = '${obj.cNumExt}'; `;
+    sql += `SET @p6 = '${obj.cColonia}'; SET @p7 = '${obj.cMunicipio}'; `;
+    sql += `SET @p8 = '${obj.cEstado}'; SET @p9 = '${obj.cCP}'; `;
+    sql += `SET @p10 = '${obj.cUsuario}'; `;
+    sql += 'CALL insertaEdificio(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);';
+    sql += 'SELECT @p11 AS `lError`, @p12 AS `cSqlState`, @p13 AS `cError`;';
+
+    /*Llamado de un query haciendo uso de una funcion*/
+    consulta.query(sql, function(error, result, fields){
+
+        /*Variable que guarda el resultado*/
+        let resultado;
+
+        /*Llenado del resultado*/
+        if(error){
+            resultado = {
+                error: error
+            }    
+        } else{
+            resultado = traeResultado.leeResultadoProcedimiento(result);            
+        }
+        /*Solucion a la callback*/
+        callback(resultado);
+    });
+   
+    /*Ejecucion de metodo desconectar*/
+    conexion.desconectar();
+
+};
 
 EdificioModelo.actualiza = () => {};
 

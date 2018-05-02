@@ -29,9 +29,19 @@
 
  };
 
- EdificioControlador.uno = (req, res, next) => {};
+ EdificioControlador.uno = (req, res, next) => {
+     
+ };
 
- EdificioControlador.inserta = (req, res, next) => {};
+ EdificioControlador.inserta = (req, res, next) => {
+    EdificioModelo.inserta(req.body.objEdificio, (error, filas) =>{
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+     });
+ };
 
  EdificioControlador.actualiza = (req, res, next) => {};
 
