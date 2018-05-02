@@ -30,7 +30,13 @@
  };
 
  EdificioControlador.uno = (req, res, next) => {
-     
+    EdificioModelo.uno(req.query.iIDEdificio, (error, filas) =>{
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+     });
  };
 
  EdificioControlador.inserta = (req, res, next) => {
