@@ -35,7 +35,15 @@
  TicketControlador.uno = (req, res, next) => {};
 
  TicketControlador.inserta = (req, res, next) => {
-     console.log(req);
+     
+     TicketModelo.inserta(req.body.objTicket, (error, filas) =>{
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+     });
+     
  };
 
  TicketControlador.actualiza = (req, res, next) => {};

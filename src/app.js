@@ -22,11 +22,16 @@
  const port = (process.env.PORT || 3000);
 
  /*Rutas*/
- const usuario = require('./rutas/ct/usuario/usuarioR');
- const login   = require('./rutas/sg/login/loginR');
- const defecto = require('./rutas/default/defaultR');
- const ticket  = require('./rutas/op/ticket/ticketR');
- const carga   = require('./rutas/md/cargaR');
+ const usuario  = require('./rutas/ct/usuario/usuarioR');
+ const login    = require('./rutas/sg/login/loginR');
+ const defecto  = require('./rutas/default/defaultR');
+ const ticket   = require('./rutas/op/ticket/ticketR');
+ const carga    = require('./rutas/md/cargaR');
+ const edificio = require('./rutas/ct/edificio/edificioR');
+ const solicitud= require('./rutas/ct/fmsolicitud/fmsolicitudR');
+ const servicio = require('./rutas/ct/tpservicio/tpservicioR');
+ const srvsolic = require('./rutas/ct/srvsolicitado/srvsolicitadoR');
+ 
 
  console.log(port);
 
@@ -40,6 +45,10 @@
     .use(ticket)
     .use(defecto)
     .use(carga)
+    .use(edificio)
+    .use(solicitud)
+    .use(servicio)
+    .use(srvsolic)
     .listen(port);
 
 module.exports = app;
