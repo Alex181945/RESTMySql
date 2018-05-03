@@ -49,7 +49,15 @@
      });
  };
 
- EdificioControlador.actualiza = (req, res, next) => {};
+ EdificioControlador.actualiza = (req, res, next) => {
+    EdificioModelo.actualiza(req.body.objEdificio, (error, filas) =>{
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+     });
+ };
 
  EdificioControlador.borra = (req, res, next) => {};
 
