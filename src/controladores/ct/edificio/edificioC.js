@@ -59,6 +59,14 @@
      });
  };
 
- EdificioControlador.borra = (req, res, next) => {};
+ EdificioControlador.borra = (req, res, next) => {
+    EdificioModelo.borra(req.body, (error, filas) =>{
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+     });
+ };
 
  module.exports = EdificioControlador;

@@ -180,6 +180,40 @@ EdificioModelo.actualiza = (data, callback) => {
 
 };
 
-EdificioModelo.borra = () => {};
+EdificioModelo.borra = (data, callback) => {
+
+    /*Instancia de clase conexion*/
+    let conexion = new claseConexion();
+   
+    /*Ejecucion de metodo conectar*/
+    let consulta = conexion.conectar();
+
+    /*Procedimiento MySql*/
+    let sql = `SET @p0 = '${data.iIDEdificio}'; SET @p1 = '${data.cUsuario}'; `; 
+    sql += 'CALL borraEdificio(@p0, @p1, @p2, @p3, @p4);';
+    sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
+
+    /*Llamado de un query haciendo uso de una funcion*/
+    consulta.query(sql, function(error, result, fields){
+
+        /*Variable que guarda el resultado*/
+        let resultado;
+
+        /*Llenado del resultado*/
+        if(error){
+            resultado = {
+                error: error
+            }    
+        } else{
+            resultado = traeResultado.leeResultadoProcedimiento(result);            
+        }
+        /*Solucion a la callback*/
+        callback(resultado);
+    });
+   
+    /*Ejecucion de metodo desconectar*/
+    conexion.desconectar();
+
+};
 
 module.exports = EdificioModelo;
