@@ -15,6 +15,7 @@
 
 const claseConexion = require(__basedir + 'db/conexion'),
      TicketModelo  = () => {};
+const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');
 
 
 TicketModelo.todos = (data, callback) => {
