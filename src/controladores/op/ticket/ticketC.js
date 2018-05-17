@@ -42,9 +42,9 @@ const AsignaTecnico = require(__basedir + 'src/servicios/funciones/asignaTecnico
         case '1' :
             AsignaTecnico.cargaDeTrabajo(req.body.iTipoAsignacionTecnico, (error, filas) =>{
                 if(error){
-                    res.send(error);
+                    console.log(error);
                 } else {
-                    res.send(filas);
+                    console.log(filas.datos);
                 }
              });
         break;

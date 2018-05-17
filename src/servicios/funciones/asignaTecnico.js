@@ -53,4 +53,4 @@ AsignaTecnico.cargaDeTrabajo = (data, callback) =>{
 
 };
 
-module.exports = {AsignaTecnico};
+module.exports = AsignaTecnico;
