@@ -37,15 +37,16 @@ const AsignaTecnico = require(__basedir + 'src/servicios/funciones/asignaTecnico
 
  TicketControlador.inserta = (req, res, next) => {
 
+    var iIDTecnico;
+
     /*Se invoca al asigna tecnico de manera automatica*/
      switch (req.body.iTipoAsignacionTecnico){
         case '1' :
-            AsignaTecnico.cargaDeTrabajo(req.body.iTipoAsignacionTecnico, (error, filas) =>{
+             AsignaTecnico.cargaDeTrabajo(req.body.iTipoAsignacionTecnico, (error, filas) =>{
                 if(error){
                     console.log(error);
                 } else {
-                    //console.log(filas);
-                    req.body.objTicket.iIDTecnico = filas;
+                    iIDTecnico = filas;
                 }
              });
         break;
@@ -53,8 +54,14 @@ const AsignaTecnico = require(__basedir + 'src/servicios/funciones/asignaTecnico
             console.log('No se indico ningun tipo de asignacion de tecnico');
         break;
      }
+
+     console.log(iIDTecnico);
+     let ticket ={
+         "objTicket" : req.body.objTicket,
+         "iIDTecnico" : iIDTecnico
+     }
      
-     TicketModelo.inserta(req.body.objTicket, (error, filas) =>{
+     TicketModelo.inserta(ticket, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
