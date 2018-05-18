@@ -15,6 +15,7 @@
 
 const claseConexion = require(__basedir + 'db/conexion'),
      CargaModelo  = () => {};
+const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');     
 
 
 CargaModelo.todos = (data, callback) => {
