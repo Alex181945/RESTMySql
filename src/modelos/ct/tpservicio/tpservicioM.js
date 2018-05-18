@@ -28,7 +28,7 @@ ServicioModelo.todos = (data, callback) => {
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data}'; `
-    sql += 'CALL consultaServicios(@p0, @p1, @p2, @p3);';
+    sql += 'CALL consultaTiposServicios(@p0, @p1, @p2, @p3);';
     sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
