@@ -11,7 +11,7 @@
 
 'use strict'
 
-const EstatusTicketControlador = require(__basedir + 'src/controladores/ct/estatus_ticket/estatus_ticketC'),
+const EstatusTicketControlador = require(__basedir + 'src/controladores/ct/estatus_tickets/estatus_ticketC'),
     express = require('express'),
     auth    = require(__basedir + 'src/middleware/auth'),
     router  = express.Router();

@@ -13,7 +13,7 @@
 
 'use strict'
 
- const EstatusTicketModelo      = require(__basedir + 'src/modelos/ct/edificio/edificioM'),
+ const EstatusTicketModelo      = require(__basedir + 'src/modelos/ct/estatus_ticket/estatus_ticketM'),
  	 EstatusTicketControlador = () => {};     
 
  EstatusTicketControlador.todos = (req, res, next) => {
