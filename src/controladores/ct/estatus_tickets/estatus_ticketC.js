@@ -40,7 +40,7 @@
  };
 
  EstatusTicketControlador.inserta = (req, res, next) => {
-    EstatusTicketModelo.inserta(req.body.objEdificio, (error, filas) =>{
+    EstatusTicketModelo.inserta(req.body.objEstatusTicket, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
@@ -50,7 +50,7 @@
  };
 
  EstatusTicketControlador.actualiza = (req, res, next) => {
-    EstatusTicketModelo.actualiza(req.body.objEdificio, (error, filas) =>{
+    EstatusTicketModelo.actualiza(req.body.objEstatusTicket, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
