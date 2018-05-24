@@ -2,7 +2,7 @@
  * 
  * Autor: Bogar Chavez 
  * Fecha: 23/04/2018
- * Descripcion: Controlador Servicio solicitado
+ * Descripcion: Controlador 
  * REST
  * 
  * Modificaciones:
