@@ -28,6 +28,7 @@
  const ticket   = require('./rutas/op/ticket/ticketR');
  const carga    = require('./rutas/md/cargaR');
  const edificio = require('./rutas/ct/edificio/edificioR'); 
+ const busqueda = require('./rutas/op/busqueda/busquedaR'); 
 
  console.log(port);
 
@@ -42,6 +43,7 @@
     .use(defecto)
     .use(carga)
     .use(edificio)
+    .use(busqueda)
     .listen(port);
 
 module.exports = app;
