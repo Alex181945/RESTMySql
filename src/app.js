@@ -31,6 +31,7 @@
  const solicitud= require('./rutas/ct/fmsolicitud/fmsolicitudR');
  const servicio = require('./rutas/ct/tpservicio/tpservicioR');
  const srvsolic = require('./rutas/ct/srvsolicitado/srvsolicitadoR');
+ const estatusTicket = require('./rutas/ct/estatus_ticket/estatus_ticketR');
  
 
  console.log(port);
@@ -49,6 +50,7 @@
     .use(solicitud)
     .use(servicio)
     .use(srvsolic)
+    .use(estatusTicket)
     .listen(port);
 
 module.exports = app;

@@ -1,34 +1,33 @@
 /**
  * 
- * Autor: Bogar Chavez 
- * Fecha: 19/04/2018
- * Descripcion: Modelo Tipo de Servicio
- * REST
+ * Autor: Alejandro Estrada
+ * Fecha: 17/05/2018
+ * Descripcion: Servicio que asigna un tecnico al ticket
+ * que se levanta.
+ * 
  * Modificaciones:
  * <Quien modifico:> <Cuando modifico:> <Donde modifico:>
+ * Ejemplo: Alejandro Estrada 09/09/2017 In-15 Fn-19 
  * 
  */
 
 'use strict'
 
-const claseConexion = require(__basedir + 'db/conexion'),
-     ServicioModelo  = () => {};
-const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');     
+const claseConexion = require(__basedir + 'db/conexion'), 
+    AsignaTecnico  = () => {};
+const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');
 
-ServicioModelo.todos = (data, callback) => {
-    
+AsignaTecnico.cargaDeTrabajo = (data, callback) =>{
+
     /*Instancia de clase conexion*/
     let conexion = new claseConexion();
    
     /*Ejecucion de metodo conectar*/
     let consulta = conexion.conectar();
-
-    /*Respuesta consulta*/
-    let respuesta;
-
+   
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${data}'; `
-    sql += 'CALL consultaTiposServicios(@p0, @p1, @p2, @p3);';
+    let sql = `SET @p0 = '${data}';`
+    sql += 'CALL consultaTecnico(@p0, @p1, @p2, @p3);';
     sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
@@ -44,9 +43,10 @@ ServicioModelo.todos = (data, callback) => {
             }    
         } else{
             resultado = traeResultado.leeResultadoProcedimiento(result);
+            resultado = resultado.datos[0].iIDTecnico;
         }
         /*Solucion a la callback*/
-        callback(resultado);
+        callback(resultado);        
     });
    
     /*Ejecucion de metodo desconectar*/
@@ -54,12 +54,4 @@ ServicioModelo.todos = (data, callback) => {
 
 };
 
-ServicioModelo.uno = () => {};
-
-ServicioModelo.inserta = (data, callback) => {};
-
-ServicioModelo.actualiza = () => {};
-
-ServicioModelo.borra = () => {};
-
-module.exports = ServicioModelo;
+module.exports = AsignaTecnico;
