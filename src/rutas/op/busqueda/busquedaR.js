@@ -19,5 +19,6 @@ const BusquedaControlador = require(__basedir + 'src/controladores/op/busqueda/b
 
     router
        .post('/busquedas', auth, BusquedaControlador.todos)
+       .get('/busquedas/genera-kardex', auth, BusquedaControlador.generaKardex)
 
 module.exports = router;

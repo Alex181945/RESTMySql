@@ -27,4 +27,18 @@
     });
  };
 
+ BusquedaControlador.generaKardex = (req, res, next) => {
+
+    console.log(req.query.iPersona);
+
+    BusquedaModelo.generaKardex(req.query.iPersona, (error, filas) => {
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+    });
+
+ };
+
  module.exports = BusquedaControlador;
