@@ -67,7 +67,7 @@ BusquedaModelo.generaKardex = (data, callback) => {
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data}'; `
-    sql += 'CALL consultaGeneraKardex(@p0, @p1, @p2, @p3);';
+    sql += 'CALL consultaGeneraKardexGral(@p0, @p1, @p2, @p3);';
     sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
