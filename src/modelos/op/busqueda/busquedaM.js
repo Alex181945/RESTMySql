@@ -27,8 +27,6 @@ BusquedaModelo.todos = (data, callback) => {
 
     /*Respuesta consulta*/
     let respuesta;
-
-    console.log(data.elementoBusqueda);
    
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data.tipoBusqueda == 'caracter' ? data.elementoBusqueda : ""}'; SET @p1 = '${data.tipoBusqueda == 'numero' ? data.elementoBusqueda : 0}'; `
@@ -55,6 +53,44 @@ BusquedaModelo.todos = (data, callback) => {
    
     /*Ejecucion de metodo desconectar*/
     conexion.desconectar();
+};
+
+BusquedaModelo.generaKardex = (data, callback) => {
+    /*Instancia de clase conexion*/
+    let conexion = new claseConexion();
+   
+    /*Ejecucion de metodo conectar*/
+    let consulta = conexion.conectar();
+
+    /*Respuesta consulta*/
+    let respuesta;
+
+    /*Procedimiento MySql*/
+    let sql = `SET @p0 = '${data}'; `
+    sql += 'CALL consultaGeneraKardexGral(@p0, @p1, @p2, @p3);';
+    sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
+
+    /*Llamado de un query haciendo uso de una funcion*/
+    consulta.query(sql, function(error, result, fields){
+
+        /*Variable que guarda el resultado*/
+        let resultado;
+
+        /*Llenado del resultado*/
+        if(error){
+            resultado = {
+                error: error
+            }    
+        } else{
+            resultado = traeResultado.leeResultadoProcedimiento(result);
+        }
+        /*Solucion a la callback*/
+        callback(resultado);
+    });
+   
+    /*Ejecucion de metodo desconectar*/
+    conexion.desconectar();
+
 };
    
 module.exports = BusquedaModelo;
