@@ -47,12 +47,13 @@ BusquedaModelo.todos = (data, callback) => {
         } else{
             resultado = traeResultado.leeResultadoProcedimiento(result);
         }
+
+        /*Ejecucion de metodo desconectar*/
+        conexion.desconectar();
         /*Solucion a la callback*/
         callback(resultado);
     });
-   
-    /*Ejecucion de metodo desconectar*/
-    conexion.desconectar();
+
 };
 
 BusquedaModelo.generaKardex = (data, callback) => {
@@ -84,12 +85,15 @@ BusquedaModelo.generaKardex = (data, callback) => {
         } else{
             resultado = traeResultado.leeResultadoProcedimiento(result);
         }
+
+        /*Ejecucion de metodo desconectar*/
+        conexion.desconectar();
+
         /*Solucion a la callback*/
         callback(resultado);
     });
    
-    /*Ejecucion de metodo desconectar*/
-    conexion.desconectar();
+    
 
 };
    
