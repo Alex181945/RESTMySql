@@ -75,7 +75,7 @@ TicketModelo.inserta = (data, callback) =>{
     sql += `SET @p2 = '${obj.cResguardante}'; SET @p3 = '${obj.cUsuarioEquipo}'; `
     sql += `SET @p4 = '${obj.cExtension}'; SET @p5 = '${obj.iIDEdificio}'; `
     sql += `SET @p6 = '${obj.cPiso}'; SET @p7 = '${obj.cOficina}'; `
-    sql += `SET @p8 = '${obj.iIDTipoServicio}'; SET @p9 = '${obj.cUsuarioReporta}'; `
+    sql += `SET @p8 = '${obj.iIDTipoServicio}'; SET @p9 = '${obj.cUsuReporta}'; `
     sql += `SET @p10 = '${obj.cObs}'; SET @p11 = '${obj.iIDCreaTicket}'; `
     sql += `SET @p12 = '${obj.iIDCriticidad}'; SET @p13 = '${data.iIDTecnico}'; `
     sql += `SET @p14 = '${obj.lTecnicoAcepta}'; SET @p15 = '${obj.lNotificacion}'; `
