@@ -43,13 +43,11 @@ AsignaTecnico.cargaDeTrabajo = (data, callback) =>{
             }    
         } else{
             resultado = traeResultado.leeResultadoProcedimiento(result);
-            console.log(resultado);
-            if(resultado.datos != null){
+            if(parseInt(resultado.validacion[0].lError) == parseInt(0)){
                 resultado = resultado.datos[0].iIDTecnico;
             } else{
                 resultado = 1;
-            }
-            
+            }            
         }
         /*Solucion a la callback*/
         callback(resultado);        
