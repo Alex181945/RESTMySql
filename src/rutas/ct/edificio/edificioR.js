@@ -19,5 +19,9 @@ const EdificioControlador = require(__basedir + 'src/controladores/ct/edificio/e
     
     router
       .get('/edificios/consulta', auth, EdificioControlador.todos)
+      .post('/edificios/inserta', auth, EdificioControlador.inserta)
+      .get('/edificios/consulta/uno', auth, EdificioControlador.uno)
+      .put('/edificios/actualiza', auth, EdificioControlador.actualiza)
+      .delete('/edificios/borra', auth, EdificioControlador.borra)
 
 module.exports = router;

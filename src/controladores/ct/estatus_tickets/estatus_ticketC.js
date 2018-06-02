@@ -13,12 +13,12 @@
 
 'use strict'
 
- const EdificioModelo      = require(__basedir + 'src/modelos/ct/edificio/edificioM'),
- 	 EdificioControlador = () => {};     
+ const EstatusTicketModelo      = require(__basedir + 'src/modelos/ct/estatus_ticket/estatus_ticketM'),
+ 	 EstatusTicketControlador = () => {};     
 
- EdificioControlador.todos = (req, res, next) => {
+ EstatusTicketControlador.todos = (req, res, next) => {
     
-    EdificioModelo.todos(req.query.iTipoConsulta, (error, filas) => {
+    EstatusTicketModelo.todos(req.query.iTipoConsulta, (error, filas) => {
         
         if(error){
             res.send(error);
@@ -29,8 +29,8 @@
 
  };
 
- EdificioControlador.uno = (req, res, next) => {
-    EdificioModelo.uno(req.query.iIDEdificio, (error, filas) =>{
+ EstatusTicketControlador.uno = (req, res, next) => {
+    EstatusTicketModelo.uno(req.query.iIDEstado, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
@@ -39,8 +39,8 @@
      });
  };
 
- EdificioControlador.inserta = (req, res, next) => {
-    EdificioModelo.inserta(req.body.objEdificio, (error, filas) =>{
+ EstatusTicketControlador.inserta = (req, res, next) => {
+    EstatusTicketModelo.inserta(req.body.objEstatusTicket, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
@@ -49,8 +49,8 @@
      });
  };
 
- EdificioControlador.actualiza = (req, res, next) => {
-    EdificioModelo.actualiza(req.body.objEdificio, (error, filas) =>{
+ EstatusTicketControlador.actualiza = (req, res, next) => {
+    EstatusTicketModelo.actualiza(req.body.objEstatusTicket, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
@@ -59,8 +59,8 @@
      });
  };
 
- EdificioControlador.borra = (req, res, next) => {
-    EdificioModelo.borra(req.body, (error, filas) =>{
+ EstatusTicketControlador.borra = (req, res, next) => {
+    EstatusTicketModelo.borra(req.body, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
@@ -69,4 +69,4 @@
      });
  };
 
- module.exports = EdificioControlador;
+ module.exports = EstatusTicketControlador;

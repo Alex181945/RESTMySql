@@ -1,23 +1,21 @@
 /**
  * 
- * Autor: Alejandro Estrada
- * Fecha: 07/04/2018
- * Descripcion: Modelo Carga Datos 
+ * Autor: Bogar Chavez 
+ * Fecha: 23/04/2018
+ * Descripcion: Modelo Servicio solicitado
  * REST
- * 
  * Modificaciones:
  * <Quien modifico:> <Cuando modifico:> <Donde modifico:>
- * Ejemplo: Alejandro Estrada 09/09/2017 In-15 Fn-19 
  * 
  */
 
 'use strict'
 
 const claseConexion = require(__basedir + 'db/conexion'),
-     CargaModelo  = () => {};
-const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');     
+     SolicitadoModelo  = () => {};
+const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');    
 
-CargaModelo.todos = (data, callback) => {
+     SolicitadoModelo.todos = (data, callback) => {
     
     /*Instancia de clase conexion*/
     let conexion = new claseConexion();
@@ -27,14 +25,11 @@ CargaModelo.todos = (data, callback) => {
 
     /*Respuesta consulta*/
     let respuesta;
-   
-    /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${data.iTipoConsulta}'; SET @p1 = '${data.iIDPerfil}'; `
-    sql += 'CALL consultaModulosProgramasPerfil(@p0, @p1, @p2, @p3, @p4);';
-    sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
 
-    /*Llamado de un query simple*/
-    //consulta.query(sql, callback);
+    /*Procedimiento MySql*/
+    let sql = `SET @p0 = '${data}'; `
+    sql += 'CALL consultaServicios(@p0, @p1, @p2, @p3);';
+    sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;'; 
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
@@ -56,6 +51,15 @@ CargaModelo.todos = (data, callback) => {
    
     /*Ejecucion de metodo desconectar*/
     conexion.desconectar();
+
 };
-   
-module.exports = CargaModelo;
+
+SolicitadoModelo.uno = () => {};
+
+SolicitadoModelo.inserta = (data, callback) => {};
+
+SolicitadoModelo.actualiza = () => {};
+
+SolicitadoModelo.borra = () => {};
+
+module.exports = SolicitadoModelo;

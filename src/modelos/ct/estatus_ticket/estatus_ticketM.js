@@ -14,10 +14,10 @@
 'use strict'
 
 const claseConexion = require(__basedir + 'db/conexion'),
-     EdificioModelo  = () => {};
+     EstatusTicketModelo  = () => {};
 const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');     
 
-EdificioModelo.todos = (data, callback) => {
+EstatusTicketModelo.todos = (data, callback) => {
     
     /*Instancia de clase conexion*/
     let conexion = new claseConexion();
@@ -30,7 +30,7 @@ EdificioModelo.todos = (data, callback) => {
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data}'; `
-    sql += 'CALL consultaEdificios(@p0, @p1, @p2, @p3);';
+    sql += 'CALL consultaEstatusTickets(@p0, @p1, @p2, @p3);';
     sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
@@ -56,7 +56,7 @@ EdificioModelo.todos = (data, callback) => {
 
 };
 
-EdificioModelo.uno = (data, callback) => {
+EstatusTicketModelo.uno = (data, callback) => {
 
     /*Instancia de clase conexion*/
     let conexion = new claseConexion();
@@ -66,7 +66,7 @@ EdificioModelo.uno = (data, callback) => {
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data}'; `;
-    sql += 'CALL consultaEdificio(@p0, @p1, @p2, @p3);';
+    sql += 'CALL consultaEstatusTicket(@p0, @p1, @p2, @p3);';
     sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     consulta.query(sql, function(error, result, fields){
@@ -91,7 +91,7 @@ EdificioModelo.uno = (data, callback) => {
 
 };
 
-EdificioModelo.inserta = (data, callback) => {
+EstatusTicketModelo.inserta = (data, callback) => {
 
     /*Instancia de clase conexion*/
     let conexion = new claseConexion();
@@ -103,94 +103,8 @@ EdificioModelo.inserta = (data, callback) => {
     let obj = JSON.parse(data);
 
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${obj.cEdificio}'; SET @p1 = '${obj.cAbreviatura}'; `;
-    sql += `SET @p2 = '${obj.iPisos}'; SET @p3 = '${obj.cPisoEsp}'; `;
-    sql += `SET @p4 = '${obj.cCalle}'; SET @p5 = '${obj.cNumExt}'; `;
-    sql += `SET @p6 = '${obj.cColonia}'; SET @p7 = '${obj.cMunicipio}'; `;
-    sql += `SET @p8 = '${obj.cEstado}'; SET @p9 = '${obj.cCP}'; `;
-    sql += `SET @p10 = '${obj.cUsuario}'; `;
-    sql += 'CALL insertaEdificio(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);';
-    sql += 'SELECT @p11 AS `lError`, @p12 AS `cSqlState`, @p13 AS `cError`;';
-
-    /*Llamado de un query haciendo uso de una funcion*/
-    consulta.query(sql, function(error, result, fields){
-
-        /*Variable que guarda el resultado*/
-        let resultado;
-
-        /*Llenado del resultado*/
-        if(error){
-            resultado = {
-                error: error
-            }    
-        } else{
-            resultado = traeResultado.leeResultadoProcedimiento(result);            
-        }
-        /*Solucion a la callback*/
-        callback(resultado);
-    });
-   
-    /*Ejecucion de metodo desconectar*/
-    conexion.desconectar();
-
-};
-
-EdificioModelo.actualiza = (data, callback) => {
-
-    /*Instancia de clase conexion*/
-    let conexion = new claseConexion();
-   
-    /*Ejecucion de metodo conectar*/
-    let consulta = conexion.conectar();
-
-    /*Conversion de string a json*/
-    let obj = JSON.parse(data);
-
-    /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${obj.iIDEdificio}'; `; 
-    sql += `SET @p1 = '${obj.cEdificio}'; SET @p2 = '${obj.cAbreviatura}'; `;
-    sql += `SET @p3 = '${obj.iPisos}';    SET @p4 = '${obj.cPisoEsp}'; `;
-    sql += `SET @p5 = '${obj.cCalle}';    SET @p6 = '${obj.cNumExt}'; `;
-    sql += `SET @p7 = '${obj.cColonia}';  SET @p8 = '${obj.cMunicipio}'; `;
-    sql += `SET @p9 = '${obj.cEstado}';   SET @p10 = '${obj.cCP}'; `;
-    sql += `SET @p11 = '${obj.lActivo}';  SET @p12 = '${obj.cUsuario}'; `;
-    sql += 'CALL actualizaEdificio(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);';
-    sql += 'SELECT @p13 AS `lError`, @p14 AS `cSqlState`, @p15 AS `cError`;';
-
-    /*Llamado de un query haciendo uso de una funcion*/
-    consulta.query(sql, function(error, result, fields){
-
-        /*Variable que guarda el resultado*/
-        let resultado;
-
-        /*Llenado del resultado*/
-        if(error){
-            resultado = {
-                error: error
-            }    
-        } else{
-            resultado = traeResultado.leeResultadoProcedimiento(result);            
-        }
-        /*Solucion a la callback*/
-        callback(resultado);
-    });
-   
-    /*Ejecucion de metodo desconectar*/
-    conexion.desconectar();
-
-};
-
-EdificioModelo.borra = (data, callback) => {
-
-    /*Instancia de clase conexion*/
-    let conexion = new claseConexion();
-   
-    /*Ejecucion de metodo conectar*/
-    let consulta = conexion.conectar();
-
-    /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${data.iIDEdificio}'; SET @p1 = '${data.cUsuario}'; `; 
-    sql += 'CALL borraEdificio(@p0, @p1, @p2, @p3, @p4);';
+    let sql = `SET @p0 = '${obj.cEstado}'; SET @p1 = '${obj.cUsuario}'; `;
+    sql += 'CALL insertaEstatusTicket(@p0, @p1, @p2, @p3, @p4);';
     sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
@@ -216,4 +130,81 @@ EdificioModelo.borra = (data, callback) => {
 
 };
 
-module.exports = EdificioModelo;
+EstatusTicketModelo.actualiza = (data, callback) => {
+
+    /*Instancia de clase conexion*/
+    let conexion = new claseConexion();
+   
+    /*Ejecucion de metodo conectar*/
+    let consulta = conexion.conectar();
+
+    /*Conversion de string a json*/
+    let obj = JSON.parse(data);
+
+    /*Procedimiento MySql*/
+    let sql = `SET @p0 = '${obj.iIDEstado}'; `; 
+    sql += `SET @p1 = '${obj.cEstado}'; SET @p2 = '${obj.lActivo}'; `;
+    sql += `SET @p3 = '${obj.cUsuario}';`;
+    sql += 'CALL actualizaEstatusTicket(@p0, @p1, @p2, @p3, @p4, @p5, @p6);';
+    sql += 'SELECT @p4 AS `lError`, @p5 AS `cSqlState`, @p6 AS `cError`;';
+
+    /*Llamado de un query haciendo uso de una funcion*/
+    consulta.query(sql, function(error, result, fields){
+
+        /*Variable que guarda el resultado*/
+        let resultado;
+
+        /*Llenado del resultado*/
+        if(error){
+            resultado = {
+                error: error
+            }    
+        } else{
+            resultado = traeResultado.leeResultadoProcedimiento(result);            
+        }
+        /*Solucion a la callback*/
+        callback(resultado);
+    });
+   
+    /*Ejecucion de metodo desconectar*/
+    conexion.desconectar();
+
+};
+
+EstatusTicketModelo.borra = (data, callback) => {
+
+    /*Instancia de clase conexion*/
+    let conexion = new claseConexion();
+   
+    /*Ejecucion de metodo conectar*/
+    let consulta = conexion.conectar();
+
+    /*Procedimiento MySql*/
+    let sql = `SET @p0 = '${data.iIDEstado}'; SET @p1 = '${data.cUsuario}'; `; 
+    sql += 'CALL borraEstatusTicket(@p0, @p1, @p2, @p3, @p4);';
+    sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
+
+    /*Llamado de un query haciendo uso de una funcion*/
+    consulta.query(sql, function(error, result, fields){
+
+        /*Variable que guarda el resultado*/
+        let resultado;
+
+        /*Llenado del resultado*/
+        if(error){
+            resultado = {
+                error: error
+            }    
+        } else{
+            resultado = traeResultado.leeResultadoProcedimiento(result);            
+        }
+        /*Solucion a la callback*/
+        callback(resultado);
+    });
+   
+    /*Ejecucion de metodo desconectar*/
+    conexion.desconectar();
+
+};
+
+module.exports = EstatusTicketModelo;

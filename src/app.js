@@ -31,6 +31,7 @@
  const busqueda = require('./rutas/op/busqueda/busquedaR'); 
  const tipoPers = require('./rutas/op/tipo-persona/tipoPersonaR');
 
+
  console.log(port);
 
  app
@@ -44,8 +45,15 @@
     .use(defecto)
     .use(carga)
     .use(edificio)
+<<<<<<< HEAD
     .use(busqueda)
     .use(tipoPers)
+=======
+    .use(solicitud)
+    .use(servicio)
+    .use(srvsolic)
+    .use(estatusTicket)
+>>>>>>> 54e60f8aceac62b2164af863cbcd040eeb43d637
     .listen(port);
 
 module.exports = app;

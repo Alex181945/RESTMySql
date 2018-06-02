@@ -1,9 +1,9 @@
 /**
  * 
  * Autor: Alejandro Estrada
- * Fecha: 07/04/2018
- * Descripcion: Modelo Carga Datos 
- * REST
+ * Fecha: 17/05/2018
+ * Descripcion: Servicio que asigna un tecnico al ticket
+ * que se levanta.
  * 
  * Modificaciones:
  * <Quien modifico:> <Cuando modifico:> <Donde modifico:>
@@ -13,28 +13,22 @@
 
 'use strict'
 
-const claseConexion = require(__basedir + 'db/conexion'),
-     CargaModelo  = () => {};
-const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');     
+const claseConexion = require(__basedir + 'db/conexion'), 
+    AsignaTecnico  = () => {};
+const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');
 
-CargaModelo.todos = (data, callback) => {
-    
+AsignaTecnico.cargaDeTrabajo = (data, callback) =>{
+
     /*Instancia de clase conexion*/
     let conexion = new claseConexion();
    
     /*Ejecucion de metodo conectar*/
     let consulta = conexion.conectar();
-
-    /*Respuesta consulta*/
-    let respuesta;
    
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${data.iTipoConsulta}'; SET @p1 = '${data.iIDPerfil}'; `
-    sql += 'CALL consultaModulosProgramasPerfil(@p0, @p1, @p2, @p3, @p4);';
-    sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
-
-    /*Llamado de un query simple*/
-    //consulta.query(sql, callback);
+    let sql = `SET @p0 = '${data}';`
+    sql += 'CALL consultaTecnico(@p0, @p1, @p2, @p3);';
+    sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
@@ -49,13 +43,19 @@ CargaModelo.todos = (data, callback) => {
             }    
         } else{
             resultado = traeResultado.leeResultadoProcedimiento(result);
+            if(parseInt(resultado.validacion[0].lError) == parseInt(0)){
+                resultado = resultado.datos[0].iIDTecnico;
+            } else{
+                resultado = 1;
+            }            
         }
         /*Solucion a la callback*/
-        callback(resultado);
+        callback(resultado);        
     });
    
     /*Ejecucion de metodo desconectar*/
     conexion.desconectar();
+
 };
-   
-module.exports = CargaModelo;
+
+module.exports = AsignaTecnico;
