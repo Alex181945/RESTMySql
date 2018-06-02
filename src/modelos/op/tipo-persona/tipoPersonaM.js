@@ -65,12 +65,12 @@ TipoPersonaModelo.inserta = (data, callback) => {
     /*Respuesta consulta*/
     let respuesta;
 
-    console.log(data.objCtPersona.iIDTipoPersona);
+    let obj = JSON.parse(data.objCtPersona);
 
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${data.objCtPersona.iIDTipoPersona}'; SET @p1 = '${data.objCtPersona.cNombre}'; `;
-    sql += `SET @p2 = '${data.objCtPersona.cAPaterno}'; SET @p3 = '${data.objCtPersona.cAMaterno}'; `;
-    sql += `SET @p4 = '${data.objCtPersona.lGenero}'; SET @p5 = '${data.objCtPersona.cAPaterno}'; `;
+    let sql = `SET @p0 = '${obj.iIDTipoPersona}'; SET @p1 = '${obj.cNombre}'; `;
+    sql += `SET @p2 = '${obj.cAPaterno}'; SET @p3 = '${obj.cAMaterno}'; `;
+    sql += `SET @p4 = '${obj.lGenero}'; SET @p5 = '${obj.cAPaterno}'; `;
     sql += 'CALL insertactPersona(@p0, @p1, @p2, @p3, @p3, @p5, @p6, @p7, @p8);';
     sql += 'SELECT @p6 AS `lError`, @p7 AS `cSqlState`, @p8 AS `cError`';
 
