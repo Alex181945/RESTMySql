@@ -29,6 +29,7 @@
  const carga    = require('./rutas/md/cargaR');
  const edificio = require('./rutas/ct/edificio/edificioR'); 
  const busqueda = require('./rutas/op/busqueda/busquedaR'); 
+ const tipoPers = require('./rutas/op/tipo-persona/tipoPersonaR');
 
  console.log(port);
 
@@ -44,6 +45,7 @@
     .use(carga)
     .use(edificio)
     .use(busqueda)
+    .use(tipoPers)
     .listen(port);
 
 module.exports = app;

@@ -12,7 +12,7 @@
 
 'use strict'
 
-const TipoPersonaControlador = require(__basedir + 'src/controladores/op/tipo-persona/tipoPersonaR.js'),
+const TipoPersonaControlador = require(__basedir + 'src/controladores/op/tipo-persona/tipoPersonaC'),
     express = require('express'),
     auth    = require(__basedir + 'src/middleware/auth'),
     router  = express.Router();
