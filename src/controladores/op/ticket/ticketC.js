@@ -42,7 +42,8 @@ const AsignaTecnico = require(__basedir + 'src/servicios/funciones/asignaTecnico
         case '1' :
              AsignaTecnico.cargaDeTrabajo(req.body.iTipoAsignacionTecnico, (error, filas) =>{
                 if(error){
-                    console.log(error);
+                    console.log("Entro: " + error);
+                    req.body.iTipoAsignacionTecnico = error;
                 } else {
                     req.body.iTipoAsignacionTecnico = filas;
                 }
@@ -53,7 +54,7 @@ const AsignaTecnico = require(__basedir + 'src/servicios/funciones/asignaTecnico
         break;
      }
 
-     
+     console.log(req.body.iTipoAsignacionTecnico);
      let ticket ={
          "objTicket" : req.body.objTicket,
          "iIDTecnico" : req.body.iTipoAsignacionTecnico
