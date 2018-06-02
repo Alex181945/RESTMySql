@@ -45,15 +45,8 @@
     .use(defecto)
     .use(carga)
     .use(edificio)
-<<<<<<< HEAD
     .use(busqueda)
     .use(tipoPers)
-=======
-    .use(solicitud)
-    .use(servicio)
-    .use(srvsolic)
-    .use(estatusTicket)
->>>>>>> 54e60f8aceac62b2164af863cbcd040eeb43d637
     .listen(port);
 
 module.exports = app;
