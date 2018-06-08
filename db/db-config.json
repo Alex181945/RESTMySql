@@ -1,10 +1,10 @@
 {
 	"mysql" : {
-		"host" : "us-cdbr-iron-east-05.cleardb.net",
+		"host" : "127.0.0.1",
 		"port" : "3306",
-		"user" : "b9a5dfb045ef64",
-		"pass" : "8acd94b8",
-		"db"   : "heroku_0a8e824845c1341",
+		"user" : "root",
+		"pass" : "",
+		"db"   : "escuelast",
 		"_comment" : "us-cdbr-iron-east-05.cleardb.net",
 		"_comment" : "3306",
 		"_comment" : "b9a5dfb045ef64",
