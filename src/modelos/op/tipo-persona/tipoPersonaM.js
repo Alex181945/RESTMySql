@@ -67,12 +67,14 @@ TipoPersonaModelo.inserta = (data, callback) => {
 
     let obj = JSON.parse(data.objCtPersona);
 
+    console.log(obj);
+
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.iIDTipoPersona}'; SET @p1 = '${obj.cNombre}'; `;
     sql += `SET @p2 = '${obj.cAPaterno}'; SET @p3 = '${obj.cAMaterno}'; `;
-    sql += `SET @p4 = '${obj.lGenero}'; SET @p5 = '${obj.cAPaterno}'; `;
-    sql += 'CALL insertactPersona(@p0, @p1, @p2, @p3, @p3, @p5, @p6, @p7, @p8);';
-    sql += 'SELECT @p6 AS `lError`, @p7 AS `cSqlState`, @p8 AS `cError`';
+    sql += `SET @p4 = '${obj.lGenero}'; SET @p5 = '${obj.dtFechaNac}'; `;
+    sql += 'CALL insertactPersona(@p0, @p1, @p2, @p3, @p3, @p5, @p6, @p7, @p8, @p9);';
+    sql += 'SELECT @p6 AS `iPersona`, @p7 AS `lError`, @p8 AS `cSqlState`, @p9 AS `cError`';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
@@ -87,6 +89,9 @@ TipoPersonaModelo.inserta = (data, callback) => {
             }    
         } else{
             resultado = traeResultado.leeResultadoProcedimiento(result);
+
+            console.log(resultado);
+
         }
         /*Solucion a la callback*/
         callback(resultado);
