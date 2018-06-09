@@ -61,13 +61,13 @@ TipoPersonaModelo.inserta = (data, callback) => {
    
     /*Ejecucion de metodo conectar*/
     let consulta = conexion.conectar();
+    let consulta2 = conexion.conectar();
 
     /*Respuesta consulta*/
     let respuesta;
 
     let obj = JSON.parse(data.objCtPersona);
-
-    console.log(obj);
+    let obj2 = JSON.parse(data.arrayCtPersona);
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.iIDTipoPersona}'; SET @p1 = '${obj.cNombre}'; `;
@@ -90,9 +90,35 @@ TipoPersonaModelo.inserta = (data, callback) => {
         } else{
             resultado = traeResultado.leeResultadoProcedimiento(result);
 
-            console.log(resultado);
+            console.log(resultado.validacion[0].lError);
+            if(resultado.validacion[0].lError === 0){
+                obj2.forEach(function(element) {
+
+                    let sql = `SET @p0 = '${element.iAtributo}'; SET @p1 = '${element.iIDTipoPersona}'; `;
+                    sql += `SET @p2 = '${resultado.validacion[0].iPersona}'; SET @p3 = '${element.cValor}'; `;
+                    sql += `SET @p4 = '${element.cObs}';`;
+                    sql += 'CALL insertaopAtributoPersona(@p0, @p1, @p2, @p3, @p3, @p5, @p6, @p7, @p8);';
+                    sql += 'SELECT @p6 AS `lError`, @p7 AS `cSqlState`, @p8 AS `cError`';
+
+                    consulta2.query(sql, function(error, result, fields){
+                        if(error){
+                            resultado = {
+                                error: error
+                            }
+                        } else{
+                            resultado += traeResultado.leeResultadoProcedimiento(result);
+                            console.log(resultado);
+                        }
+                    });
+    
+                });
+
+            }
 
         }
+
+        console.log(resultado);
+
         /*Solucion a la callback*/
         callback(resultado);
     });
