@@ -61,20 +61,21 @@ TipoPersonaModelo.inserta = (data, callback) => {
    
     /*Ejecucion de metodo conectar*/
     let consulta = conexion.conectar();
-    let consulta2 = conexion.conectar();
 
     /*Respuesta consulta*/
     let respuesta;
 
     let obj = JSON.parse(data.objCtPersona);
     let obj2 = JSON.parse(data.arrayCtPersona);
+    var contador = Object.keys(obj2).length;
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.iIDTipoPersona}'; SET @p1 = '${obj.cNombre}'; `;
     sql += `SET @p2 = '${obj.cAPaterno}'; SET @p3 = '${obj.cAMaterno}'; `;
     sql += `SET @p4 = '${obj.lGenero}'; SET @p5 = '${obj.dtFechaNac}'; `;
-    sql += 'CALL insertactPersona(@p0, @p1, @p2, @p3, @p3, @p5, @p6, @p7, @p8, @p9);';
-    sql += 'SELECT @p6 AS `iPersona`, @p7 AS `lError`, @p8 AS `cSqlState`, @p9 AS `cError`';
+    sql += `SET @p6 = '${data.arrayCtPersona}'; SET @p7 = '${contador}';`;
+    sql += 'CALL opInsertaPersona(@p0, @p1, @p2, @p3, @p3, @p5, @p6, @p7, @p8, @p9, @p10, @p11);';
+    sql += 'SELECT @p8 AS `iPersona`, @p9 AS `lError`, @p10 AS `cSqlState`, @p11 AS `cError`';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
@@ -89,35 +90,7 @@ TipoPersonaModelo.inserta = (data, callback) => {
             }    
         } else{
             resultado = traeResultado.leeResultadoProcedimiento(result);
-
-            console.log(resultado.validacion[0].lError);
-            if(resultado.validacion[0].lError === 0){
-                obj2.forEach(function(element) {
-
-                    let sql = `SET @p0 = '${element.iAtributo}'; SET @p1 = '${element.iIDTipoPersona}'; `;
-                    sql += `SET @p2 = '${resultado.validacion[0].iPersona}'; SET @p3 = '${element.cValor}'; `;
-                    sql += `SET @p4 = '${element.cObs}';`;
-                    sql += 'CALL insertaopAtributoPersona(@p0, @p1, @p2, @p3, @p3, @p5, @p6, @p7, @p8);';
-                    sql += 'SELECT @p6 AS `lError`, @p7 AS `cSqlState`, @p8 AS `cError`';
-
-                    consulta2.query(sql, function(error, result, fields){
-                        if(error){
-                            resultado = {
-                                error: error
-                            }
-                        } else{
-                            resultado += traeResultado.leeResultadoProcedimiento(result);
-                            console.log(resultado);
-                        }
-                    });
-    
-                });
-
-            }
-
         }
-
-        console.log(resultado);
 
         /*Solucion a la callback*/
         callback(resultado);
