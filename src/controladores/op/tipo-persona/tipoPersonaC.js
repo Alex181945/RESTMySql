@@ -50,4 +50,14 @@
 
  TipoPersonaControlador.borra = (req, res, next) => {};
 
+ TipoPersonaControlador.lista = (req, res, next) => {
+    TipoPersonaModelo.lista(req.body.iTipoPersona, (error, filas) => {
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+    });
+ };
+
  module.exports = TipoPersonaControlador;
