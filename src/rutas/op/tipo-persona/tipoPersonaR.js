@@ -19,5 +19,6 @@ const TipoPersonaControlador = require(__basedir + 'src/controladores/op/tipo-pe
 
     router
        .post('/tipo-persona/inserta', auth, TipoPersonaControlador.inserta)
+       .post('/tipo-persona/consulta', auth, TipoPersonaControlador.lista)
 
 module.exports = router;
