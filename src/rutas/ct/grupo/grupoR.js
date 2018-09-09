@@ -17,6 +17,6 @@ const GrupoControlador = require(__basedir + 'src/controladores/ct/grupo/grupoC'
     router  = express.Router();
     
     router
-      .get('/srvsolicitado/consulta', auth, GrupoControlador.todos)
+      .get('/grupo/consulta', auth, GrupoControlador.todos)
 
 module.exports = router;

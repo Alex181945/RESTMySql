@@ -30,6 +30,7 @@
  const edificio = require('./rutas/ct/edificio/edificioR'); 
  const busqueda = require('./rutas/op/busqueda/busquedaR'); 
  const tipoPers = require('./rutas/op/tipo-persona/tipoPersonaR');
+ const grupo    = require('./rutas/ct/grupo/grupoR');
 
 
  console.log(port);
@@ -47,6 +48,7 @@
     .use(edificio)
     .use(busqueda)
     .use(tipoPers)
+    .use(grupo)
     .listen(port);
 
 module.exports = app;

@@ -27,8 +27,7 @@ const traeResultado = require(__basedir + 'src/servicios/funciones/funciones');
     let respuesta;
 
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${data}'; `
-    sql += 'CALL consultaGrupos(@p0, @p1, @p2, @p3);';
+    let sql = 'CALL consultaGrupos(@p1, @p2, @p3);';
     sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;'; 
 
     /*Llamado de un query haciendo uso de una funcion*/
