@@ -31,6 +31,9 @@
  const busqueda = require('./rutas/op/busqueda/busquedaR'); 
  const tipoPers = require('./rutas/op/tipo-persona/tipoPersonaR');
  const grupo    = require('./rutas/ct/grupo/grupoR');
+ const grupoDetalle = require('./rutas/ct/grupo_detalle/grupo_detalleR');
+ const carrera  = require('./rutas/ct/carrera/carreraR');
+ const periodo  = require('./rutas/ct/periodo/periodoR');
 
 
  console.log(port);
@@ -49,6 +52,9 @@
     .use(busqueda)
     .use(tipoPers)
     .use(grupo)
+    .use(carrera)
+    .use(periodo)
+    .use(grupoDetalle)
     .listen(port);
 
 module.exports = app;

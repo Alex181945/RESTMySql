@@ -18,5 +18,6 @@ const GrupoControlador = require(__basedir + 'src/controladores/ct/grupo/grupoC'
     
     router
       .get('/grupo/consulta', auth, GrupoControlador.todos)
+      .get('/grupo/consulta/uno', auth, GrupoControlador.uno)
 
 module.exports = router;
