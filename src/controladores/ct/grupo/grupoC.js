@@ -27,7 +27,15 @@
 
  };
 
- GrupoControlador.uno = (req, res, next) => {};
+ GrupoControlador.uno = (req, res, next) => {
+    GrupoModelo.uno(req.query, (error, filas) =>{
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+     });
+ };
 
  GrupoControlador.inserta = (req, res, next) => {};
 
