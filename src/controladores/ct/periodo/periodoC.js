@@ -29,6 +29,19 @@
 
  };
 
+ PeriodoControlador.todosSinCarrera = (req, res, next) => {
+    
+    PeriodoModelo.todosSinCarrera(req.query, (error, filas) => {
+        
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+    });
+
+ };
+
  PeriodoControlador.uno = (req, res, next) => {
     PeriodoModelo.uno(req.query.iCarrera, (error, filas) =>{
         if(error){

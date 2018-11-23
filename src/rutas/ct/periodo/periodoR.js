@@ -19,6 +19,7 @@ const PeriodoControlador = require(__basedir + 'src/controladores/ct/periodo/per
     
     router
       .get('/periodo/consulta', auth, PeriodoControlador.todos)
+      .get('/periodo/consulta-sin-carrera', auth, PeriodoControlador.todosSinCarrera)
       .post('/periodo/inserta', auth, PeriodoControlador.inserta)
       .get('/periodo/consulta/uno', auth, PeriodoControlador.uno)
       .put('/periodo/actualiza', auth, PeriodoControlador.actualiza)
