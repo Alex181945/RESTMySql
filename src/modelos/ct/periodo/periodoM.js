@@ -70,7 +70,7 @@ PeriodoModelo.todosSinCarrera = (data, callback) => {
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data.iTipoConsulta}'; `
-    sql += 'CALL consultactPeriodos(@p0, @p1, @p2, @p3);';
+    sql += 'CALL consultactPeriodosSinCarrera(@p0, @p1, @p2, @p3);';
     sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
