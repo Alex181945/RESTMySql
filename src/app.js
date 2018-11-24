@@ -34,6 +34,7 @@
  const grupoDetalle = require('./rutas/ct/grupo_detalle/grupo_detalleR');
  const carrera  = require('./rutas/ct/carrera/carreraR');
  const periodo  = require('./rutas/ct/periodo/periodoR');
+ const materia  = require('./rutas/ct/materia/materiaR');
 
 
  console.log(port);
@@ -55,6 +56,7 @@
     .use(carrera)
     .use(periodo)
     .use(grupoDetalle)
+    .use(materia)
     .listen(port);
 
 module.exports = app;
