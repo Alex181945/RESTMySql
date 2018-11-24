@@ -99,8 +99,6 @@ MateriaModelo.inserta = (data, callback) => {
     /*Ejecucion de metodo conectar*/
     let consulta = conexion.conectar();
 
-    console.log(data);
-
     /*Conversion de string a json*/
     let obj = JSON.parse(data);
 
@@ -125,6 +123,7 @@ MateriaModelo.inserta = (data, callback) => {
             resultado = traeResultado.leeResultadoProcedimiento(result);            
         }
         /*Solucion a la callback*/
+        console.log(resultado)
         callback(resultado);
     });
    
