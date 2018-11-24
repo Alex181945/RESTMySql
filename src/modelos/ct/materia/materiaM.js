@@ -145,9 +145,9 @@ MateriaModelo.actualiza = (data, callback) => {
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.iMateria}'; SET @p1 = '${obj.cMateria}'; `;
     sql += `SET @p2 = '${obj.cClaveSEP}'; SET @p3 = '${obj.iCarrera}'; `;
-    sql += `SET @p4 = '${obj.iPeriodo}';`;
-    sql += 'CALL actualizactMateria(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);';
-    sql += 'SELECT @p5 AS `lError`, @p6 AS `cSqlState`, @p7 AS `cError`;';
+    sql += `SET @p4 = '${obj.iPeriodo}'; SET @p5 = '${obj.lActivo}';`;
+    sql += 'CALL actualizactMateria(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);';
+    sql += 'SELECT @p6 AS `lError`, @p7 AS `cSqlState`, @p8 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
