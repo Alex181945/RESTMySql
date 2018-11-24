@@ -123,7 +123,6 @@ MateriaModelo.inserta = (data, callback) => {
             resultado = traeResultado.leeResultadoProcedimiento(result);            
         }
         /*Solucion a la callback*/
-        console.log(resultado)
         callback(resultado);
     });
    
