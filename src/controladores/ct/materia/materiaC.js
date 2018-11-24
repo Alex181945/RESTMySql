@@ -60,7 +60,7 @@
  };
 
  MateriaControlador.borra = (req, res, next) => {
-    MateriaModelo.borra(req.body, (error, filas) =>{
+    MateriaModelo.borra(req.body.iMateria, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
