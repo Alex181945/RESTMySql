@@ -189,9 +189,9 @@ CarreraModelo.borra = (data, callback) => {
     let consulta = conexion.conectar();
 
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${data.iIDEdificio}'; SET @p1 = '${data.cUsuario}'; `; 
-    sql += 'CALL borraEdificio(@p0, @p1, @p2, @p3, @p4);';
-    sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
+    let sql = `SET @p0 = '${data}'; `; 
+    sql += 'CALL borractCarrera(@p0, @p1, @p2, @p3);';
+    sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){

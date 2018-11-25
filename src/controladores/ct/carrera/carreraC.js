@@ -60,7 +60,7 @@
  };
 
  CarreraControlador.borra = (req, res, next) => {
-    CarreraModelo.borra(req.body, (error, filas) =>{
+    CarreraModelo.borra(req.body.iCarrera, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
