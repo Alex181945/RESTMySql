@@ -103,14 +103,9 @@ CarreraModelo.inserta = (data, callback) => {
     let obj = JSON.parse(data);
 
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${obj.cEdificio}'; SET @p1 = '${obj.cAbreviatura}'; `;
-    sql += `SET @p2 = '${obj.iPisos}'; SET @p3 = '${obj.cPisoEsp}'; `;
-    sql += `SET @p4 = '${obj.cCalle}'; SET @p5 = '${obj.cNumExt}'; `;
-    sql += `SET @p6 = '${obj.cColonia}'; SET @p7 = '${obj.cMunicipio}'; `;
-    sql += `SET @p8 = '${obj.cEstado}'; SET @p9 = '${obj.cCP}'; `;
-    sql += `SET @p10 = '${obj.cUsuario}'; `;
-    sql += 'CALL insertaEdificio(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);';
-    sql += 'SELECT @p11 AS `lError`, @p12 AS `cSqlState`, @p13 AS `cError`;';
+    let sql = `SET @p0 = '${obj.cCarrera}'; `;
+    sql += 'CALL insertactCarrera(@p0, @p1, @p2, @p3);';
+    sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
@@ -147,15 +142,10 @@ CarreraModelo.actualiza = (data, callback) => {
     let obj = JSON.parse(data);
 
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${obj.iIDEdificio}'; `; 
-    sql += `SET @p1 = '${obj.cEdificio}'; SET @p2 = '${obj.cAbreviatura}'; `;
-    sql += `SET @p3 = '${obj.iPisos}';    SET @p4 = '${obj.cPisoEsp}'; `;
-    sql += `SET @p5 = '${obj.cCalle}';    SET @p6 = '${obj.cNumExt}'; `;
-    sql += `SET @p7 = '${obj.cColonia}';  SET @p8 = '${obj.cMunicipio}'; `;
-    sql += `SET @p9 = '${obj.cEstado}';   SET @p10 = '${obj.cCP}'; `;
-    sql += `SET @p11 = '${obj.lActivo}';  SET @p12 = '${obj.cUsuario}'; `;
-    sql += 'CALL actualizaEdificio(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);';
-    sql += 'SELECT @p13 AS `lError`, @p14 AS `cSqlState`, @p15 AS `cError`;';
+    let sql = `SET @p0 = '${obj.iCarrera}'; `; 
+    sql += `SET @p1 = '${obj.cCarrera}'; SET @p2 = '${obj.lActivo}'; `;
+    sql += 'CALL actualizactCarrera(@p0, @p1, @p2, @p3, @p4, @p5, @p6);';
+    sql += 'SELECT @p4 AS `lError`, @p5 AS `cSqlState`, @p6 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
