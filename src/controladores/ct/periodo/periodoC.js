@@ -53,7 +53,7 @@
  };
 
  PeriodoControlador.inserta = (req, res, next) => {
-    PeriodoModelo.inserta(req.body.objCarrera, (error, filas) =>{
+    PeriodoModelo.inserta(req.body.objPeriodo, (error, filas) =>{
         if(error){
             res.send(error);
         } else {
@@ -63,7 +63,7 @@
  };
 
  PeriodoControlador.actualiza = (req, res, next) => {
-    PeriodoModelo.actualiza(req.body.objCarrera, (error, filas) =>{
+    PeriodoModelo.actualiza(req.body.objPeriodo, (error, filas) =>{
         if(error){
             res.send(error);
         } else {

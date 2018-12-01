@@ -143,14 +143,9 @@ PeriodoModelo.inserta = (data, callback) => {
     let obj = JSON.parse(data);
 
     /*Procedimiento MySql*/
-    let sql = `SET @p0 = '${obj.cEdificio}'; SET @p1 = '${obj.cAbreviatura}'; `;
-    sql += `SET @p2 = '${obj.iPisos}'; SET @p3 = '${obj.cPisoEsp}'; `;
-    sql += `SET @p4 = '${obj.cCalle}'; SET @p5 = '${obj.cNumExt}'; `;
-    sql += `SET @p6 = '${obj.cColonia}'; SET @p7 = '${obj.cMunicipio}'; `;
-    sql += `SET @p8 = '${obj.cEstado}'; SET @p9 = '${obj.cCP}'; `;
-    sql += `SET @p10 = '${obj.cUsuario}'; `;
-    sql += 'CALL insertaEdificio(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);';
-    sql += 'SELECT @p11 AS `lError`, @p12 AS `cSqlState`, @p13 AS `cError`;';
+    let sql = `SET @p0 = '${obj.iCarrera}'; SET @p1 = '${obj.cPeriodo}'; `;
+    sql += 'CALL insertactPeriodo(@p0, @p1, @p2, @p3, @p4);';
+    sql += 'SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
