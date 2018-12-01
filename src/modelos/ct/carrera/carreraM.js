@@ -102,7 +102,7 @@ CarreraModelo.inserta = (data, callback) => {
     /*Conversion de string a json*/
     let obj = JSON.parse(data);
 
-    console.log(data)
+    console.log(obj)
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.cCarrera}'; `;
@@ -124,6 +124,9 @@ CarreraModelo.inserta = (data, callback) => {
             resultado = traeResultado.leeResultadoProcedimiento(result);            
         }
         /*Solucion a la callback*/
+
+        console.log(resultado);
+
         callback(resultado);
     });
    
