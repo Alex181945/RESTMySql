@@ -104,8 +104,8 @@ CarreraModelo.inserta = (data, callback) => {
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.cCarrera}'; `;
-    sql += 'CALL insertactCarrera(@p0, @p1, @p2, @p3);';
-    sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
+    sql += 'CALL insertactCarreraDevuelve(@p0, @p1, @p2, @p3, @p4);';
+    sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError` , @p4 AS `iCarrera`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
