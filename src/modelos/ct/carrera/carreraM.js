@@ -119,7 +119,6 @@ CarreraModelo.inserta = (data, callback) => {
                 error: error
             }    
         } else{
-            console.log(result);
             resultado = traeResultado.leeResultadoProcedimiento(result);            
         }
         /*Solucion a la callback*/
