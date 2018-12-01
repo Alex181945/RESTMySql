@@ -102,6 +102,8 @@ CarreraModelo.inserta = (data, callback) => {
     /*Conversion de string a json*/
     let obj = JSON.parse(data);
 
+    console.log(data)
+
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.cCarrera}'; `;
     sql += 'CALL insertactCarrera(@p0, @p1, @p2, @p3);';
