@@ -66,7 +66,7 @@ CarreraModelo.uno = (data, callback) => {
 
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${data}'; `;
-    sql += 'CALL consultactCarreras(@p0, @p1, @p2, @p3);';
+    sql += 'CALL consultactCarrera(@p0, @p1, @p2, @p3);';
     sql += 'SELECT @p1 AS `lError`, @p2 AS `cSqlState`, @p3 AS `cError`;';
 
     consulta.query(sql, function(error, result, fields){
