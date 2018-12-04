@@ -190,6 +190,8 @@ PeriodoModelo.actualiza = (data, callback) => {
     sql += 'CALL actualizactPeriodo(@p0, @p1, @p2, @p3, @p4, @p5, @p6);';
     sql += 'SELECT @p4 AS `lError`, @p5 AS `cSqlState`, @p6 AS `cError`;';
 
+    console.log(sql);
+
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
 
