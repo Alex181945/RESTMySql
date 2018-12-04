@@ -145,8 +145,8 @@ CarreraModelo.actualiza = (data, callback) => {
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.iCarrera}'; `; 
     sql += `SET @p1 = '${obj.cCarrera}'; SET @p2 = '${obj.lActivo}'; `;
-    sql += 'CALL actualizactCarrera(@p0, @p1, @p2, @p3, @p4, @p5, @p6);';
-    sql += 'SELECT @p4 AS `lError`, @p5 AS `cSqlState`, @p6 AS `cError`;';
+    sql += 'CALL actualizactCarrera(@p0, @p1, @p2, @p3, @p4, @p5);';
+    sql += 'SELECT @p3 AS `lError`, @p5 AS `cSqlState`, @p5 AS `cError`;';
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
