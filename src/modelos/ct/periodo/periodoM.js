@@ -181,6 +181,8 @@ PeriodoModelo.actualiza = (data, callback) => {
     /*Conversion de string a json*/
     let obj = JSON.parse(data);
 
+    console.log(data);
+
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.iPeriodo}'; `; 
     sql += `SET @p1 = '${obj.iCarrera}'; SET @p2 = '${obj.cPeriodo}'; `;
