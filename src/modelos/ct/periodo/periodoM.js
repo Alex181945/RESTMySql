@@ -181,16 +181,12 @@ PeriodoModelo.actualiza = (data, callback) => {
     /*Conversion de string a json*/
     let obj = JSON.parse(data);
 
-    console.log(data);
-
     /*Procedimiento MySql*/
     let sql = `SET @p0 = '${obj.iPeriodo}'; `; 
     sql += `SET @p1 = '${obj.iCarrera}'; SET @p2 = '${obj.cPeriodo}'; `;
     sql += `SET @p3 = '${obj.lActivo}'; `;
     sql += 'CALL actualizactPeriodo(@p0, @p1, @p2, @p3, @p4, @p5, @p6);';
     sql += 'SELECT @p4 AS `lError`, @p5 AS `cSqlState`, @p6 AS `cError`;';
-
-    console.log(sql);
 
     /*Llamado de un query haciendo uso de una funcion*/
     consulta.query(sql, function(error, result, fields){
