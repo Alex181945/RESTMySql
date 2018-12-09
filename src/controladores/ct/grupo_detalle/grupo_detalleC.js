@@ -29,6 +29,19 @@
 
  };
 
+ GrupoDetalleControlador.listaAlumnos = (req, res, next) => {
+    
+    GrupoDetalleModelo.listaAlumnos(req.query, (error, filas) => {
+        
+        if(error){
+            res.send(error);
+        } else {
+            res.send(filas);
+        }
+    });
+
+ };
+
  GrupoDetalleControlador.uno = (req, res, next) => {
     GrupoDetalleModelo.uno(req.query, (error, filas) =>{
         if(error){

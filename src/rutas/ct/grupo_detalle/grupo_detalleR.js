@@ -19,6 +19,7 @@ const GrupoDetalleControlador = require(__basedir + 'src/controladores/ct/grupo_
     
     router
       .get('/grupo-detalle/consulta', auth, GrupoDetalleControlador.todos)
+      .get('/grupo-detalle/lista-alumno/consulta', auth, GrupoDetalleControlador.listaAlumnos)
       .post('/grupo-detalle/inserta', auth, GrupoDetalleControlador.inserta)
       .get('/grupo-detalle/consulta/uno', auth, GrupoDetalleControlador.uno)
       .put('/grupo-detalle/actualiza', auth, GrupoDetalleControlador.actualiza)
